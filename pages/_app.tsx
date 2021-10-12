@@ -2,7 +2,7 @@ import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
-import Player from "../components/Player";
+import PreviewPlayer from "../components/PreviewPlayer";
 import Sidebar from "../components/Sidebar";
 import "../styles/globals.css";
 
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             </main>
           </div>
         </div>
-        <Player />
+        <PreviewPlayer />
       </Layout>
     </div>
   );

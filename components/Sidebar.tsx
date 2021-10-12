@@ -94,7 +94,7 @@ export default function Sidebar() {
 
         <ul className="flex flex-col w-full gap-3 mt-5 text-sm text-gray">
           {playlists?.map((playlist) => (
-            <Link href={`/playlist/${playlist.id}`}>
+            <Link key={playlist.id} href={`/playlist/${playlist.id}`}>
               <a className="w-full">
                 <li
                   key={playlist.id}

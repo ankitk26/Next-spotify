@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { Fragment } from "react";
+import { useSpotify } from "../context/SpotifyContext";
 import { Track } from "../types/types";
-import { formatDuration } from "../utils/formatDuration";
+import { fmtMSS } from "../utils/formatDuration";
 
 interface TracksProps {
   tracks: Track[];
@@ -15,6 +17,14 @@ export default function TracksTable({
   noArtist = false,
   noHeaders = false,
 }: TracksProps) {
+  const { setCurrentTrack } = useSpotify();
+
+  const playTrack = (track: Track) => {
+    if (track.preview_url) {
+      setCurrentTrack(track);
+    }
+  };
+
   return (
     <div className="grid grid-cols-12 gap-2 p-1">
       {!noArtist && (
@@ -46,7 +56,7 @@ export default function TracksTable({
       )}
 
       {tracks?.map((track, index) => (
-        <>
+        <Fragment key={track.id}>
           <div className="flex items-center col-span-1 my-3 text-sm text-gray">
             {index + 1}
           </div>
@@ -68,15 +78,22 @@ export default function TracksTable({
               )}
 
               <div className="w-full">
-                <div className="w-10/12 text-sm font-medium truncate">
+                <h2
+                  className={`w-10/12 text-sm font-medium truncate ${
+                    track.preview_url
+                      ? "cursor-pointer hover:underline"
+                      : "cursor-default"
+                  }`}
+                  onClick={() => playTrack(track)}
+                >
                   {track.name}
-                </div>
+                </h2>
 
                 {!noArtist && (
                   <div className="flex flex-wrap items-center w-10/12 gap-1 text-sm text-gray">
                     <span className="truncate ">
                       {track.artists.map((artist, index) => (
-                        <Link href={`/artist/${artist.id}`}>
+                        <Link key={artist.id} href={`/artist/${artist.id}`}>
                           <a>
                             <span className="hover:text-white hover:underline">
                               {index !== 0 ? `, ${artist.name}` : artist.name}
@@ -102,9 +119,9 @@ export default function TracksTable({
           )}
 
           <div className="flex items-center col-span-1 my-3 text-sm text-gray ">
-            {formatDuration(track.duration_ms)}
+            {fmtMSS(track.duration_ms)}
           </div>
-        </>
+        </Fragment>
       ))}
     </div>
   );

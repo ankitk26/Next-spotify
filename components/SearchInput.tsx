@@ -5,13 +5,12 @@ import { useSpotify } from "../context/SpotifyContext";
 export default function SearchInput() {
   const router = useRouter();
 
-  const { query, setQuery, fetchSearchResults } = useSpotify();
+  const { query, setQuery } = useSpotify();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(query);
     router.push(`/search/${query}`);
-    // fetchSearchResults(query);
   };
 
   return (

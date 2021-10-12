@@ -49,7 +49,9 @@ export default function Playlist({ playlist }: PlaylistProps) {
 
       <div className="mt-5">
         <TracksTable
-          tracks={playlist?.tracks.items.map((item) => item.track)}
+          tracks={playlist?.tracks.items
+            .filter((item) => item.track !== null)
+            .map((item) => item.track)}
         />
       </div>
     </>
@@ -59,7 +61,7 @@ export default function Playlist({ playlist }: PlaylistProps) {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const playlistId = ctx.params.playlistId;
   const playlist = await customGet(
-    `https://api.spotify.com/v1/playlists/${playlistId}?market=from_token&fields=description,id,followers.total,images,name,owner(display_name,id),type,tracks.items(added_at,track(album(id,images,name),artists(id,name),duration_ms,id,name))&limit=50`,
+    `https://api.spotify.com/v1/playlists/${playlistId}?market=from_token&fields=description,id,followers.total,images,name,owner(display_name,id),type,tracks.items(added_at,track(album(id,images,name),artists(id,name),duration_ms,id,name,preview_url))&limit=50`,
     ctx
   );
 

@@ -47,6 +47,7 @@ export interface Track {
   album: Album;
   artists: [Artist];
   duration_ms: number;
+  preview_url: string;
 }
 
 export interface PlaylistType {

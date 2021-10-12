@@ -6,7 +6,7 @@ import {
   useContext,
   useState,
 } from "react";
-import { PlaylistType, SearchResults } from "../types/types";
+import { PlaylistType, SearchResults, Track } from "../types/types";
 
 interface ContextProps {
   playlists: PlaylistType[];
@@ -15,6 +15,10 @@ interface ContextProps {
   setQuery: Dispatch<SetStateAction<string>>;
   fetchPlaylists: () => void;
   fetchSearchResults: (query: string) => void;
+  currentTrack: Track;
+  setCurrentTrack: Dispatch<SetStateAction<Track>>;
+  tracksQueue: Track[];
+  setTracksQueue: Dispatch<SetStateAction<Track[]>>;
 }
 
 const SpotifyContext = createContext<Partial<ContextProps>>(null);
@@ -22,6 +26,8 @@ const SpotifyContext = createContext<Partial<ContextProps>>(null);
 export const SpotifyProvider = ({ children }) => {
   const [playlists, setPlaylists] = useState<PlaylistType[]>(null);
   const [searchResults, setSearchResults] = useState<SearchResults>(null);
+  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
+  const [tracksQueue, setTracksQueue] = useState<Track[] | null>(null);
   const [query, setQuery] = useState("");
 
   const fetchPlaylists = async () => {
@@ -52,6 +58,10 @@ export const SpotifyProvider = ({ children }) => {
         setQuery,
         searchResults,
         fetchSearchResults,
+        currentTrack,
+        setCurrentTrack,
+        tracksQueue,
+        setTracksQueue,
       }}
     >
       {children}

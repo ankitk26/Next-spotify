@@ -1,5 +1,6 @@
 import { signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
+import { useSpotify } from "../context/SpotifyContext";
 import { MySession } from "../types/types";
 import CollectionTabs from "./CollectionTabs";
 import SearchInput from "./SearchInput";
@@ -7,8 +8,10 @@ import SearchInput from "./SearchInput";
 export default function Header() {
   const router = useRouter();
   const [session]: [MySession, Boolean] = useSession();
+  const { setCurrentTrack } = useSpotify();
 
   const logout = () => {
+    setCurrentTrack(null);
     signOut({ callbackUrl: "http://localhost:3000" });
   };
 
