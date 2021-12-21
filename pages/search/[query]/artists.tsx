@@ -1,10 +1,12 @@
 import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 import ArtistList from "../../../components/ArtistList";
 import Heading from "../../../components/Heading";
 import { Artist } from "../../../types/types";
 import { customGet } from "../../../utils/customGet";
+import { isAuthenticated } from "../../../utils/isAuthenticated";
 
-interface SearchArtistProps {
+interface IProps {
   query: string;
   searchArtists: {
     artists: {
@@ -13,10 +15,7 @@ interface SearchArtistProps {
   };
 }
 
-export default function SearchArtists({
-  query,
-  searchArtists,
-}: SearchArtistProps) {
+export default function SearchArtists({ query, searchArtists }: IProps) {
   return (
     <div className="p-4">
       <Heading text={`All artists for "${query}"`} />
@@ -26,10 +25,21 @@ export default function SearchArtists({
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  if (!(await isAuthenticated(session))) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
   const query = ctx.params?.query;
   const searchArtists = await customGet(
     `https://api.spotify.com/v1/search?q=${query}&market=from_token&type=artist&limit=50`,
-    ctx
+    session
   );
   return { props: { query, searchArtists } };
 };

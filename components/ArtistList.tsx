@@ -2,11 +2,11 @@ import { Artist } from "../types/types";
 import CardItem from "./CardItem";
 import CardItemGrid from "./CardItemGrid";
 
-interface ArtistListProps {
+interface IProps {
   artists: Artist[];
 }
 
-export default function ArtistList({ artists }: ArtistListProps) {
+export default function ArtistList({ artists }: IProps) {
   return (
     <CardItemGrid>
       {artists?.map((artist) => (

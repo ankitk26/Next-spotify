@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 import Link from "next/link";
 import CardItem from "../../components/CardItem";
 import CardItemGrid from "../../components/CardItemGrid";
@@ -6,12 +7,13 @@ import Heading from "../../components/Heading";
 import { useSpotify } from "../../context/SpotifyContext";
 import { PlaylistType } from "../../types/types";
 import { customGet } from "../../utils/customGet";
+import { isAuthenticated } from "../../utils/isAuthenticated";
 
-interface UserPlaylistsProps {
+interface IProps {
   likedTracks: PlaylistType;
 }
 
-export default function UserPlaylists({ likedTracks }: UserPlaylistsProps) {
+export default function UserPlaylists({ likedTracks }: IProps) {
   const { playlists } = useSpotify();
 
   return (
@@ -20,7 +22,7 @@ export default function UserPlaylists({ likedTracks }: UserPlaylistsProps) {
       <CardItemGrid>
         <Link href="/collection/tracks">
           <div
-            className="flex flex-col items-start justify-end col-span-4 gap-8 p-4 rounded cursor-pointer"
+            className="flex flex-col items-start justify-end col-span-2 gap-8 p-4 rounded cursor-pointer"
             style={{
               background: "linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%)",
             }}
@@ -54,9 +56,20 @@ export default function UserPlaylists({ likedTracks }: UserPlaylistsProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  if (!isAuthenticated(session)) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
   const likedTracks = await customGet(
     `https://api.spotify.com/v1/me/tracks?market=from_token&limit=5`,
-    ctx
+    session
   );
 
   return { props: { likedTracks } };

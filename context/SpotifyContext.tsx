@@ -10,24 +10,26 @@ import { PlaylistType, SearchResults, Track } from "../types/types";
 
 interface ContextProps {
   playlists: PlaylistType[];
-  searchResults: SearchResults;
+  searchResults: SearchResults | null;
   query: string;
   setQuery: Dispatch<SetStateAction<string>>;
   fetchPlaylists: () => void;
   fetchSearchResults: (query: string) => void;
-  currentTrack: Track;
-  setCurrentTrack: Dispatch<SetStateAction<Track>>;
+  currentTrack: Track | null;
+  setCurrentTrack: Dispatch<SetStateAction<Track | null>>;
   tracksQueue: Track[];
   setTracksQueue: Dispatch<SetStateAction<Track[]>>;
 }
 
-const SpotifyContext = createContext<Partial<ContextProps>>(null);
+const SpotifyContext = createContext({} as ContextProps);
 
-export const SpotifyProvider = ({ children }) => {
-  const [playlists, setPlaylists] = useState<PlaylistType[]>(null);
-  const [searchResults, setSearchResults] = useState<SearchResults>(null);
+export const SpotifyProvider = ({ children }: any) => {
+  const [playlists, setPlaylists] = useState<PlaylistType[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchResults | null>(
+    null
+  );
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
-  const [tracksQueue, setTracksQueue] = useState<Track[] | null>(null);
+  const [tracksQueue, setTracksQueue] = useState<Track[]>([]);
   const [query, setQuery] = useState("");
 
   const fetchPlaylists = async () => {
@@ -36,7 +38,7 @@ export const SpotifyProvider = ({ children }) => {
       const data = resp.data;
       setPlaylists(data.items);
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
     }
   };
 
@@ -45,7 +47,7 @@ export const SpotifyProvider = ({ children }) => {
       const resp = await axios.get(`/api/search?q=${query}`);
       setSearchResults(resp.data);
     } catch (err) {
-      console.error(err.message);
+      console.error(err);
     }
   };
 

@@ -1,13 +1,15 @@
 import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 import TracksTable from "../../components/TracksTable";
 import { PlaylistType } from "../../types/types";
 import { customGet } from "../../utils/customGet";
+import { isAuthenticated } from "../../utils/isAuthenticated";
 
-interface PlaylistProps {
+interface IProps {
   playlist: PlaylistType;
 }
 
-export default function Playlist({ playlist }: PlaylistProps) {
+export default function Playlist({ playlist }: IProps) {
   return (
     <>
       <div className="flex items-end gap-6">
@@ -59,10 +61,21 @@ export default function Playlist({ playlist }: PlaylistProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  if (!(await isAuthenticated(session))) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
   const playlistId = ctx.params.playlistId;
   const playlist = await customGet(
     `https://api.spotify.com/v1/playlists/${playlistId}?market=from_token&fields=description,id,followers.total,images,name,owner(display_name,id),type,tracks.items(added_at,track(album(id,images,name),artists(id,name),duration_ms,id,name,preview_url))&limit=50`,
-    ctx
+    session
   );
 
   return { props: { playlist } };

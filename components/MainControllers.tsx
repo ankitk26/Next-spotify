@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { fmtMSS } from "../utils/formatDuration";
 
-export default function MainControllers({ previewUrl }) {
-  const [audio, setAudio] = useState<HTMLAudioElement>(null);
+interface IProps {
+  previewUrl: string;
+}
+
+export default function MainControllers({ previewUrl }: IProps) {
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -60,7 +64,7 @@ export default function MainControllers({ previewUrl }) {
 
   const pause = () => {
     setIsPlaying(false);
-    audio.pause();
+    audio?.pause();
   };
 
   useEffect(() => {

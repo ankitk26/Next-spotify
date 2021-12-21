@@ -1,23 +1,27 @@
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useSpotify } from "../context/SpotifyContext";
 import { Track } from "../types/types";
 import { fmtMSS } from "../utils/formatDuration";
 
-interface TracksProps {
+interface IProps {
   tracks: Track[];
   noAlbum?: boolean;
   noArtist?: boolean;
-  noHeaders?: boolean;
 }
 
 export default function TracksTable({
   tracks,
   noAlbum = false,
   noArtist = false,
-  noHeaders = false,
-}: TracksProps) {
+}: IProps) {
   const { setCurrentTrack } = useSpotify();
+
+  const [updatedTracks, setUpdatedTracks] = useState([]);
+
+  useEffect(() => {
+    setUpdatedTracks(tracks);
+  }, [tracks]);
 
   const playTrack = (track: Track) => {
     if (track.preview_url) {
@@ -55,7 +59,7 @@ export default function TracksTable({
         </>
       )}
 
-      {tracks?.map((track, index) => (
+      {updatedTracks?.map((track, index) => (
         <Fragment key={track.id}>
           <div className="flex items-center col-span-1 my-3 text-sm text-gray">
             {index + 1}
@@ -70,7 +74,7 @@ export default function TracksTable({
               {(!noAlbum || noArtist) && (
                 <div className="flex-shrink-0 w-10 h-10">
                   <img
-                    src={track.album.images[0].url}
+                    src={track.album.images?.[0].url as string}
                     alt={track.name}
                     className="object-contain w-10 h-10"
                   />
@@ -93,7 +97,10 @@ export default function TracksTable({
                   <div className="flex flex-wrap items-center w-10/12 gap-1 text-sm text-gray">
                     <span className="truncate ">
                       {track.artists.map((artist, index) => (
-                        <Link key={artist.id} href={`/artist/${artist.id}`}>
+                        <Link
+                          key={artist.id + track.id}
+                          href={`/artist/${artist.id}`}
+                        >
                           <a>
                             <span className="hover:text-white hover:underline">
                               {index !== 0 ? `, ${artist.name}` : artist.name}

@@ -1,16 +1,18 @@
 import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 import AlbumList from "../../components/AlbumList";
 import ArtistList from "../../components/ArtistList";
 import Heading from "../../components/Heading";
 import TracksTable from "../../components/TracksTable";
 import { Album, Artist, Track } from "../../types/types";
 import { customGet } from "../../utils/customGet";
+import { isAuthenticated } from "../../utils/isAuthenticated";
 
 interface Albums {
   items: Album[];
 }
 
-interface SingleArtistProps {
+interface IProps {
   artist: Artist;
   artistTracks: Track[];
   artistAlbums: Albums;
@@ -30,7 +32,7 @@ export default function SingleArtist({
   artistAppearsOn,
   artistCompilation,
   relatedArtists,
-}: SingleArtistProps) {
+}: IProps) {
   return (
     <>
       <div className="flex items-end gap-6 p-4">
@@ -106,41 +108,51 @@ export default function SingleArtist({
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const artistId = ctx.params.artistId;
+  const session = await getSession(ctx);
 
+  if (!(await isAuthenticated(session))) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  const artistId = ctx.params.artistId;
   const artist = await customGet(
     `https://api.spotify.com/v1/artists/${artistId}`,
-    ctx
+    session
   );
 
   const artistTracks = await customGet(
     `https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=from_token`,
-    ctx
+    session
   );
 
   const artistAlbums = await customGet(
     `https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=album`,
-    ctx
+    session
   );
 
   const artistSingles = await customGet(
     `https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=single`,
-    ctx
+    session
   );
 
   const artistAppearsOn = await customGet(
     `https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=appears_on`,
-    ctx
+    session
   );
 
   const artistCompilation = await customGet(
     `https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=compilation`,
-    ctx
+    session
   );
 
   const relatedArtists = await customGet(
     `https://api.spotify.com/v1/artists/${artistId}/related-artists`,
-    ctx
+    session
   );
 
   return {

@@ -1,18 +1,22 @@
-import { signOut, useSession } from "next-auth/client";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useSpotify } from "../context/SpotifyContext";
 import { MySession } from "../types/types";
 import CollectionTabs from "./CollectionTabs";
 import SearchInput from "./SearchInput";
 
+interface UseSession {
+  data: MySession | null;
+}
+
 export default function Header() {
   const router = useRouter();
-  const [session]: [MySession, Boolean] = useSession();
+  const { data: session }: UseSession = useSession();
   const { setCurrentTrack } = useSpotify();
 
   const logout = () => {
     setCurrentTrack(null);
-    signOut({ callbackUrl: "http://localhost:3000" });
+    signOut({ callbackUrl: "http://localhost:3000/login" });
   };
 
   return (
@@ -43,19 +47,19 @@ export default function Header() {
 
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-3 pl-[2px] pr-4 bg-black rounded-full bg-opacity-70 py-[2px]">
-          {session?.user.picture === undefined ? (
+          {session?.user?.picture === undefined ? (
             <span className="p-1 rounded-full bg-[#333333] material-icons">
               person
             </span>
           ) : (
             <img
-              src={session?.user.picture}
+              src={session?.user?.picture as string}
               className="object-contain w-8 h-8 rounded-full"
-              alt={session?.user.name}
+              alt={session?.user?.name as string}
             />
           )}
           <span className="text-sm font-bold tracking-wide">
-            {session?.user.name}
+            {session?.user?.name}
           </span>
         </div>
 

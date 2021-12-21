@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-interface CardItemProps {
+interface IProps {
   images: any;
   id: string;
   altTitle: string;
@@ -15,18 +15,18 @@ export default function CardItem({
   id,
   altTitle,
   heading,
-  subheading = null,
+  subheading = "",
   imageRounded = false,
   type,
-}: CardItemProps) {
+}: IProps) {
   return (
     <Link href={`/${type}/${id}`}>
-      <div className="w-full col-span-2 transition duration-300 p-4 rounded cursor-pointer hover:bg-[#282828] bg-paper">
+      <div className="transition duration-300 p-4 rounded cursor-pointer hover:bg-[#282828] bg-paper">
         {images.length > 0 ? (
           <img
             src={images[0].url}
             alt={altTitle}
-            className={`object-cover w-40 h-40 ${
+            className={`object-contain w-full  ${
               imageRounded ? "rounded-full" : "rounded"
             }`}
           />

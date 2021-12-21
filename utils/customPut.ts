@@ -1,8 +1,8 @@
-import { getSession } from "next-auth/client";
+import { getSession } from "next-auth/react";
 import Router from "next/router";
 import { MySession } from "../types/types";
 
-export const customPut = async (url, ctx) => {
+export const customPut = async (url: string, ctx: any) => {
   const session: MySession = await getSession(ctx);
 
   if (!session?.user) {

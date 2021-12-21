@@ -2,11 +2,11 @@ import { PlaylistType } from "../types/types";
 import CardItem from "./CardItem";
 import CardItemGrid from "./CardItemGrid";
 
-interface PlaylistListProps {
+interface IProps {
   playlists: PlaylistType[];
 }
 
-export default function PlaylistList({ playlists }: PlaylistListProps) {
+export default function PlaylistList({ playlists }: IProps) {
   return (
     <CardItemGrid>
       {playlists?.map((playlist) => (

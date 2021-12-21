@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 import Link from "next/link";
 import { Fragment } from "react";
 import AlbumList from "../../../components/AlbumList";
@@ -9,13 +10,14 @@ import { useSpotify } from "../../../context/SpotifyContext";
 import { SearchResults, Track } from "../../../types/types";
 import { customGet } from "../../../utils/customGet";
 import { fmtMSS } from "../../../utils/formatDuration";
+import { isAuthenticated } from "../../../utils/isAuthenticated";
 
-interface SearchProps {
+interface IProps {
   query: string;
   searchResults: SearchResults;
 }
 
-export default function Search({ query, searchResults }: SearchProps) {
+export default function Search({ query, searchResults }: IProps) {
   const { setCurrentTrack } = useSpotify();
 
   const playTrack = (track: Track) => {
@@ -36,6 +38,10 @@ export default function Search({ query, searchResults }: SearchProps) {
             </Link>
 
             <div className="grid grid-cols-12 gap-2 p-1">
+              {JSON.stringify(
+                fmtMSS(searchResults.tracks.items[0].duration_ms)
+              )}
+
               {searchResults.tracks.items?.slice(0, 5).map((track) => (
                 <Fragment key={track.id}>
                   <div className="flex items-center w-full col-span-11 my-3">
@@ -127,10 +133,21 @@ export default function Search({ query, searchResults }: SearchProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  if (!(await isAuthenticated(session))) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
   const query = ctx.params?.query;
   const searchResults = await customGet(
     `https://api.spotify.com/v1/search?q=${query}&market=from_token&type=album,artist,track,playlist&limit=50`,
-    ctx
+    session
   );
   return { props: { query, searchResults } };
 };

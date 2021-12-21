@@ -1,15 +1,16 @@
 import { GetServerSideProps } from "next";
-import { useSession } from "next-auth/client";
+import { getSession, useSession } from "next-auth/react";
 import TracksTable from "../../components/TracksTable";
-import { PlaylistType } from "../../types/types";
+import { MySession, PlaylistType } from "../../types/types";
 import { customGet } from "../../utils/customGet";
+import { isAuthenticated } from "../../utils/isAuthenticated";
 
-interface LikedTracksProps {
+interface IProps {
   likedTracks: PlaylistType;
 }
 
-export default function LikedTracks({ likedTracks }: LikedTracksProps) {
-  const [session] = useSession();
+export default function LikedTracks({ likedTracks }: IProps) {
+  const { data: session }: { data: MySession } = useSession();
 
   return (
     <>
@@ -44,9 +45,20 @@ export default function LikedTracks({ likedTracks }: LikedTracksProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  if (!(await isAuthenticated(session))) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
   const likedTracks = await customGet(
     `https://api.spotify.com/v1/me/tracks?market=from_token&limit=50`,
-    ctx
+    session
   );
 
   return { props: { likedTracks } };

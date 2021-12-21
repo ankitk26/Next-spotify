@@ -1,13 +1,15 @@
 import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 import TracksTable from "../../components/TracksTable";
 import { Album } from "../../types/types";
 import { customGet } from "../../utils/customGet";
+import { isAuthenticated } from "../../utils/isAuthenticated";
 
-interface SingleAlbumProps {
+interface IProps {
   album: Album;
 }
 
-export default function SingleAlbum({ album }: SingleAlbumProps) {
+export default function SingleAlbum({ album }: IProps) {
   return (
     <>
       <div className="flex items-end gap-6 p-4">
@@ -50,10 +52,21 @@ export default function SingleAlbum({ album }: SingleAlbumProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  if (!(await isAuthenticated(session))) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
   const albumId = ctx.params.albumId;
   const album = await customGet(
     `https://api.spotify.com/v1/albums/${albumId}`,
-    ctx
+    session
   );
   return { props: { album } };
 };

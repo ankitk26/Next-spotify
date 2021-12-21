@@ -59,7 +59,7 @@ export default function Sidebar() {
             <a>
               <li
                 className={`${
-                  router.pathname === "/collection/playlists"
+                  router.pathname.includes("/collection")
                     ? activeLink
                     : inactiveLink
                 } flex items-center gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
@@ -98,7 +98,7 @@ export default function Sidebar() {
               <a className="w-full">
                 <li
                   key={playlist.id}
-                  className="truncate cursor-default hover:text-white"
+                  className="truncate text-sm font-semibold cursor-default hover:text-white"
                 >
                   {playlist.name}
                 </li>

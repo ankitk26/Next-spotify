@@ -1,8 +1,8 @@
-import { Provider } from "next-auth/client";
+import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
 import { SpotifyProvider } from "../context/SpotifyContext";
 
-export default function Layout({ children, pageProps }) {
+export default function Layout({ children, pageProps }: any) {
   return (
     <>
       <Head>
@@ -12,14 +12,14 @@ export default function Layout({ children, pageProps }) {
         />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
-        />
+        ></link>
         <title>Next-spotify</title>
       </Head>
-      <Provider session={pageProps.session}>
+      <SessionProvider session={pageProps.session}>
         <SpotifyProvider>{children}</SpotifyProvider>
-      </Provider>
+      </SessionProvider>
     </>
   );
 }

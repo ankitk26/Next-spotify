@@ -1,9 +1,11 @@
 import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 import AlbumList from "../components/AlbumList";
 import Heading from "../components/Heading";
 import PlaylistList from "../components/PlaylistList";
 import { customGet } from "../utils/customGet";
 import { getGreeting } from "../utils/getGreeting";
+import { isAuthenticated } from "../utils/isAuthenticated";
 
 export default function Home({ newReleases, featuredPlaylists }) {
   return (
@@ -20,14 +22,25 @@ export default function Home({ newReleases, featuredPlaylists }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  if (!(await isAuthenticated(session))) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
   const newReleases = await customGet(
     "https://api.spotify.com/v1/browse/new-releases?country=IN&limit=25",
-    ctx
+    session
   );
 
   const featuredPlaylists = await customGet(
     "https://api.spotify.com/v1/browse/featured-playlists?country=IN",
-    ctx
+    session
   );
 
   return { props: { newReleases, featuredPlaylists } };

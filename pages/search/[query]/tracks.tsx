@@ -1,10 +1,12 @@
 import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 import Heading from "../../../components/Heading";
 import TracksTable from "../../../components/TracksTable";
 import { Track } from "../../../types/types";
 import { customGet } from "../../../utils/customGet";
+import { isAuthenticated } from "../../../utils/isAuthenticated";
 
-interface SearchTracksProps {
+interface IProps {
   query: string;
   searchTracks: {
     tracks: {
@@ -13,10 +15,7 @@ interface SearchTracksProps {
   };
 }
 
-export default function SearchTracks({
-  query,
-  searchTracks,
-}: SearchTracksProps) {
+export default function SearchTracks({ query, searchTracks }: IProps) {
   return (
     <div className="p-4">
       <Heading text={`All songs for ${query}`} />
@@ -26,10 +25,21 @@ export default function SearchTracks({
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  if (!(await isAuthenticated(session))) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
   const query = ctx.params?.query;
   const searchTracks = await customGet(
     `https://api.spotify.com/v1/search?q=${query}&market=from_token&type=track&limit=50`,
-    ctx
+    session
   );
   return { props: { query, searchTracks } };
 };

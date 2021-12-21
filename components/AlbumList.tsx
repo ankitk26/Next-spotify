@@ -2,11 +2,11 @@ import CardItem from "../components/CardItem";
 import { Album } from "../types/types";
 import CardItemGrid from "./CardItemGrid";
 
-interface AlbumListProps {
+interface IProps {
   albums: Album[];
 }
 
-export default function AlbumList({ albums }: AlbumListProps) {
+export default function AlbumList({ albums }: IProps) {
   return (
     <CardItemGrid>
       {albums?.map((album) => (
