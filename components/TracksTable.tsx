@@ -60,7 +60,7 @@ export default function TracksTable({
       )}
 
       {updatedTracks?.map((track, index) => (
-        <Fragment key={track.id}>
+        <Fragment key={track.id + index}>
           <div className="flex items-center col-span-1 my-3 text-sm text-gray">
             {index + 1}
           </div>
