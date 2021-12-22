@@ -1,2 +1,3 @@
-export const fmtMSS = (seconds: number) =>
-  new Date(1000 * seconds).toISOString().substring(15, 15 + 4);
+export const fmtMSS = (seconds: number) => {
+  return new Date(seconds).toISOString().substring(15, 15 + 4);
+};

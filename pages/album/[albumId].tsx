@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
+import Layout from "../../components/Layout";
 import TracksTable from "../../components/TracksTable";
 import { Album } from "../../types/types";
 import { customGet } from "../../utils/customGet";
@@ -11,7 +12,7 @@ interface IProps {
 
 export default function SingleAlbum({ album }: IProps) {
   return (
-    <>
+    <Layout title={`Spotify - ${album?.name}`}>
       <div className="flex items-end gap-6 p-4">
         {album && (
           <>
@@ -47,7 +48,7 @@ export default function SingleAlbum({ album }: IProps) {
       <div className="p-4">
         <TracksTable tracks={album?.tracks.items} noAlbum />
       </div>
-    </>
+    </Layout>
   );
 }
 

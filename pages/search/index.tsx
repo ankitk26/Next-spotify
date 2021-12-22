@@ -3,27 +3,30 @@ import { getSession } from "next-auth/react";
 import CardItem from "../../components/CardItem";
 import CardItemGrid from "../../components/CardItemGrid";
 import Heading from "../../components/Heading";
+import Layout from "../../components/Layout";
 import { customGet } from "../../utils/customGet";
 import { isAuthenticated } from "../../utils/isAuthenticated";
 
 export default function Search({ categories }) {
   return (
-    <div className="p-4">
-      <Heading text="Browse Categories" />
+    <Layout title="Spotify - Search">
+      <div className="p-4">
+        <Heading text="Browse Categories" />
 
-      <CardItemGrid>
-        {categories?.categories.items.map((category) => (
-          <CardItem
-            key={category.id}
-            altTitle={category.name}
-            heading={category.name}
-            id={category.id}
-            images={category.icons}
-            type="genre"
-          />
-        ))}
-      </CardItemGrid>
-    </div>
+        <CardItemGrid>
+          {categories?.categories.items.map((category) => (
+            <CardItem
+              key={category.id}
+              altTitle={category.name}
+              heading={category.name}
+              id={category.id}
+              images={category.icons}
+              type="genre"
+            />
+          ))}
+        </CardItemGrid>
+      </div>
+    </Layout>
   );
 }
 

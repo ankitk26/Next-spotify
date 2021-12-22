@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import AlbumList from "../../components/AlbumList";
 import Heading from "../../components/Heading";
+import Layout from "../../components/Layout";
 import { Album } from "../../types/types";
 import { customGet } from "../../utils/customGet";
 import { isAuthenticated } from "../../utils/isAuthenticated";
@@ -12,10 +13,12 @@ interface IProps {
 
 export default function Albums({ albums }: IProps) {
   return (
-    <div className="p-4">
-      <Heading text="Albums" />
-      <AlbumList albums={albums} />
-    </div>
+    <Layout title="Spotify - Your Library">
+      <div className="p-4">
+        <Heading text="Albums" />
+        <AlbumList albums={albums} />
+      </div>
+    </Layout>
   );
 }
 

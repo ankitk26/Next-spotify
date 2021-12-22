@@ -1,0 +1,17 @@
+.description {
+  width: 100%;
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+  --tw-text-opacity: 1;
+  color: rgb(178 178 179 / var(--tw-text-opacity));
+}
+
+.description a {
+  --tw-text-opacity: 1;
+  color: rgb(254 255 254 / var(--tw-text-opacity));
+  font-weight: 500;
+}
+
+.description a:hover {
+  text-decoration: underline;
+}

@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import Heading from "../../../components/Heading";
+import Layout from "../../../components/Layout";
 import PlaylistList from "../../../components/PlaylistList";
 import { PlaylistType } from "../../../types/types";
 import { customGet } from "../../../utils/customGet";
@@ -17,10 +18,12 @@ interface IProps {
 
 export default function SearchPlaylists({ query, searchPlaylists }: IProps) {
   return (
-    <div className="p-4">
-      <Heading text={`All playlists for ${query}`} />
-      <PlaylistList playlists={searchPlaylists.playlists.items} />
-    </div>
+    <Layout title="Spotify - Search">
+      <div className="p-4">
+        <Heading text={`All playlists for ${query}`} />
+        <PlaylistList playlists={searchPlaylists.playlists.items} />
+      </div>
+    </Layout>
   );
 }
 

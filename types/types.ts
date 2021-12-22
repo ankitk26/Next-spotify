@@ -66,6 +66,7 @@ export interface PlaylistType {
   items?: [{ added_at: string; track: Track }];
   tracks?: {
     items?: [{ added_at: string; track: Track }];
+    total: number;
   };
   type?: string;
   total?: number;

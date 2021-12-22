@@ -1,5 +1,7 @@
 import { GetServerSideProps } from "next";
 import { getSession, useSession } from "next-auth/react";
+import Image from "next/image";
+import Layout from "../../components/Layout";
 import TracksTable from "../../components/TracksTable";
 import { MySession, PlaylistType } from "../../types/types";
 import { customGet } from "../../utils/customGet";
@@ -13,14 +15,15 @@ export default function LikedTracks({ likedTracks }: IProps) {
   const { data: session }: { data: MySession } = useSession();
 
   return (
-    <>
+    <Layout title="Spotify - Liked Songs">
       {likedTracks && (
         <>
           <div className="flex items-end gap-6 p-4">
-            <img
+            <Image
               src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"
               alt="Liked Songs"
-              className="object-contain w-52 h-52"
+              height={208}
+              width={208}
             />
             <div className="flex flex-col gap-3">
               <h5 className="text-sm font-bold uppercase">Playlist</h5>
@@ -40,7 +43,7 @@ export default function LikedTracks({ likedTracks }: IProps) {
           </div>
         </>
       )}
-    </>
+    </Layout>
   );
 }
 

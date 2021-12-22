@@ -1,8 +1,11 @@
-import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
-import { SpotifyProvider } from "../context/SpotifyContext";
 
-export default function Layout({ children, pageProps }: any) {
+interface IProps {
+  children: any;
+  title?: string;
+}
+
+export default function Layout({ children, title }: IProps) {
   return (
     <>
       <Head>
@@ -15,11 +18,9 @@ export default function Layout({ children, pageProps }: any) {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         ></link>
-        <title>Next-spotify</title>
+        <title>{title}</title>
       </Head>
-      <SessionProvider session={pageProps.session}>
-        <SpotifyProvider>{children}</SpotifyProvider>
-      </SessionProvider>
+      {children}
     </>
   );
 }

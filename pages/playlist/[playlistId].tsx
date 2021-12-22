@@ -1,6 +1,9 @@
+import parse from "html-react-parser";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
+import Layout from "../../components/Layout";
 import TracksTable from "../../components/TracksTable";
+import styles from "../../styles/Description.module.css";
 import { PlaylistType } from "../../types/types";
 import { customGet } from "../../utils/customGet";
 import { isAuthenticated } from "../../utils/isAuthenticated";
@@ -11,7 +14,7 @@ interface IProps {
 
 export default function Playlist({ playlist }: IProps) {
   return (
-    <>
+    <Layout title={`Spotify - ${playlist?.name}`}>
       <div className="flex items-end gap-6">
         {playlist && (
           <>
@@ -19,7 +22,7 @@ export default function Playlist({ playlist }: IProps) {
               <img
                 src={playlist.images[0].url}
                 alt={playlist.name}
-                className="object-contain w-52 h-52"
+                className="object-contain w-60 h-60 "
               />
             ) : (
               <span className="flex items-center justify-center w-52 h-52 bg-paper text-9xl material-icons">
@@ -30,17 +33,21 @@ export default function Playlist({ playlist }: IProps) {
               <h5 className="text-xs font-bold uppercase">{playlist.type}</h5>
               <h2 className="text-5xl font-bold">{playlist.name}</h2>
 
-              <p className="text-sm text-gray">{playlist.description}</p>
+              <p className={styles.description}>
+                {parse(playlist.description)}
+              </p>
+
               <div className="flex items-center gap-5 text-sm">
                 <span className="font-bold">{playlist.owner.display_name}</span>
                 {playlist.followers.total > 0 && (
                   <span className="text-gray">
-                    {playlist.followers?.total} likes
+                    {playlist.followers.total.toLocaleString()}{" "}
+                    {playlist.followers.total > 1 ? "likes" : "like"}
                   </span>
                 )}
                 {playlist.tracks.items.length > 0 && (
                   <span className="text-gray">
-                    {playlist.tracks.items?.length} songs
+                    {playlist.tracks.total.toLocaleString()} songs
                   </span>
                 )}{" "}
               </div>
@@ -56,7 +63,7 @@ export default function Playlist({ playlist }: IProps) {
             .map((item) => item.track)}
         />
       </div>
-    </>
+    </Layout>
   );
 }
 
@@ -74,7 +81,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const playlistId = ctx.params.playlistId;
   const playlist = await customGet(
-    `https://api.spotify.com/v1/playlists/${playlistId}?market=from_token&fields=description,id,followers.total,images,name,owner(display_name,id),type,tracks.items(added_at,track(album(id,images,name),artists(id,name),duration_ms,id,name,preview_url))&limit=50`,
+    `https://api.spotify.com/v1/playlists/${playlistId}`,
     session
   );
 

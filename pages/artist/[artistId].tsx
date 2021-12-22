@@ -3,6 +3,7 @@ import { getSession } from "next-auth/react";
 import AlbumList from "../../components/AlbumList";
 import ArtistList from "../../components/ArtistList";
 import Heading from "../../components/Heading";
+import Layout from "../../components/Layout";
 import TracksTable from "../../components/TracksTable";
 import { Album, Artist, Track } from "../../types/types";
 import { customGet } from "../../utils/customGet";
@@ -34,7 +35,7 @@ export default function SingleArtist({
   relatedArtists,
 }: IProps) {
   return (
-    <>
+    <Layout title={`Spotify - ${artist?.name}`}>
       <div className="flex items-end gap-6 p-4">
         {artist && (
           <>
@@ -52,7 +53,7 @@ export default function SingleArtist({
             <div className="flex flex-col items-start gap-3">
               <h2 className="text-5xl font-bold">{artist.name}</h2>
               <span className="text-sm">
-                {artist.followers.total} followers
+                {artist.followers.total.toLocaleString()} followers
               </span>
               <div className="flex items-center gap-5 text-sm">
                 {artist.genres.map((genre) => (
@@ -103,7 +104,7 @@ export default function SingleArtist({
           <ArtistList artists={relatedArtists.artists} />
         </div>
       )}
-    </>
+    </Layout>
   );
 }
 

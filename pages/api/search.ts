@@ -2,7 +2,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import { customGet } from "../../utils/customGet";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const query = req.query?.q;
   const session = await getSession({ req });
 
@@ -11,4 +14,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     session
   );
   res.status(200).json(searchResults);
-};
+}

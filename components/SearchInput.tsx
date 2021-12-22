@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { FormEvent } from "react";
 import { useSpotify } from "../context/SpotifyContext";
 
 export default function SearchInput() {
@@ -7,39 +6,40 @@ export default function SearchInput() {
 
   const { query, setQuery } = useSpotify();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(query);
     router.push(`/search/${query}`);
   };
 
+  if (!router.pathname.includes("/search")) {
+    return null;
+  }
+
   return (
     <form
-      className={`${
-        router.pathname.includes("/search") ? "block" : "hidden"
-      } flex items-center justify-between w-full gap-3 px-3 py-[6px] bg-white rounded-full`}
+      className="flex items-center justify-between w-full gap-3 px-3 py-1.5 bg-white rounded-full"
       onSubmit={handleSubmit}
     >
       <span className="text-gray material-icons">search</span>
       <input
         type="text"
-        className="flex-grow w-full bg-transparent text-paper focus:outline-none"
+        className="flex-grow w-full text-sm font-semibold bg-transparent text-paper focus:outline-none"
         placeholder="Artists and songs"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        spellCheck={false}
       />
       <button
         type="button"
-        className="focus:outline-none"
+        className="flex items-center focus:outline-none"
         onClick={() => setQuery("")}
       >
-        <span
-          className={`${
-            query !== "" ? "block" : "hidden"
-          } text-gray material-icons hover:text-paper`}
-        >
-          close
-        </span>
+        {query && (
+          <span className="text-gray material-icons hover:text-paper">
+            close
+          </span>
+        )}
       </button>
     </form>
   );

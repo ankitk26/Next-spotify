@@ -1,6 +1,8 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 import Heading from "../../components/Heading";
+import Layout from "../../components/Layout";
 import PlaylistList from "../../components/PlaylistList";
 import { PlaylistType } from "../../types/types";
 import { customGet } from "../../utils/customGet";
@@ -14,11 +16,25 @@ interface IProps {
 }
 
 export default function CategoryPlaylists({ categoryName, playlists }: IProps) {
+  const [capitalizedCategory, setCapitalizedCategory] = useState("");
+
+  useEffect(() => {
+    if (categoryName) {
+      const afterName = categoryName
+        .split(" ")
+        .map((i) => i[0].toUpperCase() + i.slice(1))
+        .join(" ");
+      setCapitalizedCategory(afterName);
+    }
+  }, [categoryName]);
+
   return (
-    <div className="p-4">
-      <Heading text={categoryName} className="capitalize" />
-      <PlaylistList playlists={playlists?.items} />
-    </div>
+    <Layout title={`Spotify - ${capitalizedCategory}`}>
+      <div className="p-4">
+        <Heading text={categoryName} className="capitalize" />
+        <PlaylistList playlists={playlists?.items} />
+      </div>
+    </Layout>
   );
 }
 

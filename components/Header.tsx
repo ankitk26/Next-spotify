@@ -53,9 +53,9 @@ export default function Header() {
             </span>
           ) : (
             <img
-              src={session?.user?.picture as string}
+              src={session?.user?.picture}
               className="object-contain w-8 h-8 rounded-full"
-              alt={session?.user?.name as string}
+              alt={session?.user?.name}
             />
           )}
           <span className="text-sm font-bold tracking-wide">

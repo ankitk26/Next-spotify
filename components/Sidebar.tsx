@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -22,13 +23,15 @@ export default function Sidebar() {
       }`}
     >
       <div className="flex flex-col items-center h-full m-5 mt-5">
-        <img
+        <Image
           src="/images/spotify_logo.png"
-          className="object-contain w-4/6"
+          width={125}
+          height={50}
+          objectFit="contain"
           alt="Spotify logo"
         />
 
-        <ul className="w-full mt-8">
+        <ul className="w-full mt-4">
           <Link href="/">
             <a>
               <li
@@ -59,7 +62,8 @@ export default function Sidebar() {
             <a>
               <li
                 className={`${
-                  router.pathname.includes("/collection")
+                  router.pathname.includes("/collection") &&
+                  !router.pathname.includes("tracks")
                     ? activeLink
                     : inactiveLink
                 } flex items-center gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
@@ -79,9 +83,11 @@ export default function Sidebar() {
                     : "text-gray"
                 } flex items-center mt-6 gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
               >
-                <img
+                <Image
                   src="/images/liked_cover.jpeg"
-                  className="object-contain w-7 h-7"
+                  height={28}
+                  width={28}
+                  objectFit="contain"
                   alt="Liked playlist cover"
                 />
                 <span className="font-bold">Liked songs</span>
@@ -98,7 +104,7 @@ export default function Sidebar() {
               <a className="w-full">
                 <li
                   key={playlist.id}
-                  className="truncate text-sm font-semibold cursor-default hover:text-white"
+                  className="text-sm font-semibold truncate cursor-default hover:text-white"
                 >
                   {playlist.name}
                 </li>

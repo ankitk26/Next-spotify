@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import ArtistList from "../../../components/ArtistList";
 import Heading from "../../../components/Heading";
+import Layout from "../../../components/Layout";
 import { Artist } from "../../../types/types";
 import { customGet } from "../../../utils/customGet";
 import { isAuthenticated } from "../../../utils/isAuthenticated";
@@ -17,10 +18,12 @@ interface IProps {
 
 export default function SearchArtists({ query, searchArtists }: IProps) {
   return (
-    <div className="p-4">
-      <Heading text={`All artists for "${query}"`} />
-      <ArtistList artists={searchArtists.artists.items} />
-    </div>
+    <Layout title="Spotify - Search">
+      <div className="p-4">
+        <Heading text={`All artists for "${query}"`} />
+        <ArtistList artists={searchArtists.artists.items} />
+      </div>
+    </Layout>
   );
 }
 

@@ -10,7 +10,7 @@ export default function PlayerTrackInfo({ currentTrack }: IProps) {
     <div className="flex items-center col-span-3 gap-3">
       {currentTrack.album && (
         <img
-          src={currentTrack.album.images?.[0].url as string}
+          src={currentTrack.album.images?.[0].url}
           alt={currentTrack.name}
           className="w-14 h-14"
         />
