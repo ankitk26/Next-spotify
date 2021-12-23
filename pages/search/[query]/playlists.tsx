@@ -19,10 +19,8 @@ interface IProps {
 export default function SearchPlaylists({ query, searchPlaylists }: IProps) {
   return (
     <Layout title="Spotify - Search">
-      <div className="p-4">
-        <Heading text={`All playlists for ${query}`} />
-        <PlaylistList playlists={searchPlaylists.playlists.items} />
-      </div>
+      <Heading text={`All playlists for ${query}`} />
+      <PlaylistList playlists={searchPlaylists.playlists.items} />
     </Layout>
   );
 }

@@ -19,10 +19,8 @@ interface IProps {
 export default function SearchAlbums({ query, searchAlbums }: IProps) {
   return (
     <Layout title="Spotify - Search">
-      <div className="p-4">
-        <Heading text={`All albums for "${query}"`} />
-        <AlbumList albums={searchAlbums.albums.items} />
-      </div>
+      <Heading text={`All albums for "${query}"`} />
+      <AlbumList albums={searchAlbums.albums.items} />
     </Layout>
   );
 }

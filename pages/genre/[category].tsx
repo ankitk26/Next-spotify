@@ -30,10 +30,8 @@ export default function CategoryPlaylists({ categoryName, playlists }: IProps) {
 
   return (
     <Layout title={`Spotify - ${capitalizedCategory}`}>
-      <div className="p-4">
-        <Heading text={categoryName} className="capitalize" />
-        <PlaylistList playlists={playlists?.items} />
-      </div>
+      <Heading text={categoryName} className="capitalize" />
+      <PlaylistList playlists={playlists?.items} />
     </Layout>
   );
 }

@@ -19,10 +19,8 @@ interface IProps {
 export default function SearchTracks({ query, searchTracks }: IProps) {
   return (
     <Layout title="Spotify - Search">
-      <div className="p-4">
-        <Heading text={`All songs for ${query}`} />
-        <TracksTable tracks={searchTracks?.tracks.items} />
-      </div>
+      <Heading text={`All songs for ${query}`} />
+      <TracksTable tracks={searchTracks?.tracks.items} />
     </Layout>
   );
 }

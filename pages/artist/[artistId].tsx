@@ -36,7 +36,7 @@ export default function SingleArtist({
 }: IProps) {
   return (
     <Layout title={`Spotify - ${artist?.name}`}>
-      <div className="flex items-end gap-6 p-4">
+      <div className="flex items-end gap-6">
         {artist && (
           <>
             {artist.images.length > 0 ? (
@@ -65,41 +65,43 @@ export default function SingleArtist({
         )}
       </div>
 
-      <div className="p-4">
+      <div className="mt-8">
         <Heading text="Popular" />
-        <TracksTable tracks={artistTracks} noAlbum noArtist />
+        <div className="-mt-8">
+          <TracksTable tracks={artistTracks} noAlbum noArtist />
+        </div>
       </div>
 
       {artistAlbums?.items.length > 0 && (
-        <div className="p-4 mt-5">
+        <div className="mt-12">
           <Heading text="Albums" />
           <AlbumList albums={artistAlbums.items} />
         </div>
       )}
 
       {artistSingles?.items.length > 0 && (
-        <div className="p-4 mt-5">
+        <div className="mt-12">
           <Heading text="Singles" />
           <AlbumList albums={artistSingles.items} />
         </div>
       )}
 
       {artistAppearsOn?.items.length > 0 && (
-        <div className="p-4 mt-5">
+        <div className="mt-12">
           <Heading text="Appears on" />
           <AlbumList albums={artistAppearsOn.items} />
         </div>
       )}
 
       {artistCompilation?.items.length > 0 && (
-        <div className="p-4 mt-5">
+        <div className="mt-12">
           <Heading text="Compilation" />
           <AlbumList albums={artistCompilation.items} />
         </div>
       )}
 
       {relatedArtists?.artists.length > 0 && (
-        <div className="p-4 mt-5">
+        <div className="mt-12">
           <Heading text="Fans also like" />
           <ArtistList artists={relatedArtists.artists} />
         </div>

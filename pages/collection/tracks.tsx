@@ -18,7 +18,7 @@ export default function LikedTracks({ likedTracks }: IProps) {
     <Layout title="Spotify - Liked Songs">
       {likedTracks && (
         <>
-          <div className="flex items-end gap-6 p-4">
+          <div className="flex items-end gap-6">
             <Image
               src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"
               alt="Liked Songs"
@@ -38,9 +38,7 @@ export default function LikedTracks({ likedTracks }: IProps) {
             </div>
           </div>
 
-          <div className="p-4">
-            <TracksTable tracks={likedTracks.items.map((item) => item.track)} />
-          </div>
+          <TracksTable tracks={likedTracks.items.map((item) => item.track)} />
         </>
       )}
     </Layout>

@@ -10,22 +10,20 @@ import { isAuthenticated } from "../../utils/isAuthenticated";
 export default function Search({ categories }) {
   return (
     <Layout title="Spotify - Search">
-      <div className="p-4">
-        <Heading text="Browse Categories" />
+      <Heading text="Browse Categories" />
 
-        <CardItemGrid>
-          {categories?.categories.items.map((category) => (
-            <CardItem
-              key={category.id}
-              altTitle={category.name}
-              heading={category.name}
-              id={category.id}
-              images={category.icons}
-              type="genre"
-            />
-          ))}
-        </CardItemGrid>
-      </div>
+      <CardItemGrid>
+        {categories?.categories.items.map((category) => (
+          <CardItem
+            key={category.id}
+            altTitle={category.name}
+            heading={category.name}
+            id={category.id}
+            images={category.icons}
+            type="genre"
+          />
+        ))}
+      </CardItemGrid>
     </Layout>
   );
 }

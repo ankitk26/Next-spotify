@@ -14,10 +14,8 @@ interface IProps {
 export default function Albums({ albums }: IProps) {
   return (
     <Layout title="Spotify - Your Library">
-      <div className="p-4">
-        <Heading text="Albums" />
-        <AlbumList albums={albums} />
-      </div>
+      <Heading text="Albums" />
+      <AlbumList albums={albums} />
     </Layout>
   );
 }

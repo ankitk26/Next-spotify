@@ -19,10 +19,8 @@ interface IProps {
 export default function SearchArtists({ query, searchArtists }: IProps) {
   return (
     <Layout title="Spotify - Search">
-      <div className="p-4">
-        <Heading text={`All artists for "${query}"`} />
-        <ArtistList artists={searchArtists.artists.items} />
-      </div>
+      <Heading text={`All artists for "${query}"`} />
+      <ArtistList artists={searchArtists.artists.items} />
     </Layout>
   );
 }

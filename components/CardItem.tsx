@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRef } from "react";
 
 interface IProps {
   images: any;
@@ -19,6 +20,8 @@ export default function CardItem({
   imageRounded = false,
   type,
 }: IProps) {
+  const thumbnailRef = useRef<HTMLImageElement>();
+
   return (
     <Link href={`/${type}/${id}`}>
       <div className="transition duration-300 p-4 rounded cursor-pointer hover:bg-[#282828] bg-paper">
@@ -26,7 +29,8 @@ export default function CardItem({
           <img
             src={images[0].url}
             alt={altTitle}
-            className={`object-contain w-full  ${
+            ref={thumbnailRef}
+            className={`object-cover w-full h-36  ${
               imageRounded ? "rounded-full" : "rounded"
             }`}
           />
@@ -40,7 +44,7 @@ export default function CardItem({
         <h3 className="mt-5 font-bold truncate">{heading}</h3>
         {subheading && (
           <h6 className="text-sm truncate text-gray">{subheading}</h6>
-        )}{" "}
+        )}
       </div>
     </Link>
   );

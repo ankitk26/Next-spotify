@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 interface IProps {
   children: any;
@@ -6,6 +7,8 @@ interface IProps {
 }
 
 export default function Layout({ children, title }: IProps) {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -20,7 +23,11 @@ export default function Layout({ children, title }: IProps) {
         ></link>
         <title>{title}</title>
       </Head>
-      {children}
+      <section
+        className={`w-full ${router.pathname === "/login" ? "" : "p-4"}`}
+      >
+        {children}
+      </section>
     </>
   );
 }

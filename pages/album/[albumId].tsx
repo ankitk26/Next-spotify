@@ -13,7 +13,7 @@ interface IProps {
 export default function SingleAlbum({ album }: IProps) {
   return (
     <Layout title={`Spotify - ${album?.name}`}>
-      <div className="flex items-end gap-6 p-4">
+      <div className="flex items-end gap-6">
         {album && (
           <>
             {album.images.length > 0 ? (
@@ -45,9 +45,7 @@ export default function SingleAlbum({ album }: IProps) {
         )}
       </div>
 
-      <div className="p-4">
-        <TracksTable tracks={album?.tracks.items} noAlbum />
-      </div>
+      <TracksTable tracks={album?.tracks.items} noAlbum />
     </Layout>
   );
 }

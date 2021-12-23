@@ -16,12 +16,12 @@ export default function Sidebar() {
     fetchPlaylists();
   }, []);
 
+  if (router.pathname === "/login") {
+    return null;
+  }
+
   return (
-    <aside
-      className={`h-full col-span-1 bg-black ${
-        router.pathname === "/login" ? "hidden" : "block"
-      }`}
-    >
+    <aside className="h-full fixed top-0 left-0 w-64  bg-black">
       <div className="flex flex-col items-center h-full m-5 mt-5">
         <Image
           src="/images/spotify_logo.png"
@@ -96,9 +96,12 @@ export default function Sidebar() {
           </Link>
         </ul>
 
-        <div className="w-full h-[1px] mt-4 bg-gray"></div>
+        <div className="w-full h-px mt-4 bg-gray"></div>
 
-        <ul className="flex flex-col w-full gap-3 mt-5 text-sm text-gray">
+        <ul
+          id="sidebar-playlists"
+          className="flex flex-col pr-3 w-full overflow-x-hidden gap-3 mt-5 text-sm text-gray"
+        >
           {playlists?.map((playlist) => (
             <Link key={playlist.id} href={`/playlist/${playlist.id}`}>
               <a className="w-full">

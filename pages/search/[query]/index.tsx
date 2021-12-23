@@ -31,7 +31,7 @@ export default function Search({ query, searchResults }: IProps) {
     <Layout title="Spotify - Search">
       {searchResults && (
         <>
-          <div className="p-4 mt-5">
+          <div className="mt-5">
             <Link href={`/search/${query}/tracks`}>
               <a>
                 <Heading text="Songs" />
@@ -94,7 +94,7 @@ export default function Search({ query, searchResults }: IProps) {
           </div>
 
           {searchResults.artists.items.length > 0 && (
-            <div className="p-4 mt-5">
+            <div className="mt-5">
               <Link href={`/search/${query}/artists`}>
                 <a>
                   <Heading text="Artists" />
@@ -104,7 +104,7 @@ export default function Search({ query, searchResults }: IProps) {
             </div>
           )}
 
-          <div className="p-4 mt-5">
+          <div className="mt-5">
             <Link href={`/search/${query}/albums`}>
               <a>
                 <Heading text="Albums" />
@@ -113,7 +113,7 @@ export default function Search({ query, searchResults }: IProps) {
             <AlbumList albums={searchResults.albums.items.slice(0, 6)} />
           </div>
 
-          <div className="p-4 mt-5">
+          <div className="mt-5">
             <Link href={`/search/${query}/playlists`}>
               <a>
                 <Heading text="Playlists" />

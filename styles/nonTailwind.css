@@ -1,10 +1,30 @@
+/* Sidebar playlists scrollbar */
+body::-webkit-scrollbar,
+#sidebar-playlists::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track,
+#sidebar-playlists::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb,
+#sidebar-playlists::-webkit-scrollbar-thumb {
+  background-color: #888988;
+  outline: 1px solid slategrey;
+}
+
+/* NProgress */
 /* Make clicks pass-through */
 #nprogress {
   pointer-events: none;
 }
 
 #nprogress .bar {
-  background: #1db954;
+  --primary: #1db964; /*Same color as the primary color in tailwind.config.js */
+  background: var(--primary);
   position: fixed;
   z-index: 1031;
   top: 0;
