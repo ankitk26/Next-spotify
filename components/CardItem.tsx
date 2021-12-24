@@ -23,7 +23,7 @@ export default function CardItem({
   const thumbnailRef = useRef<HTMLImageElement>();
 
   return (
-    <Link href={`/${type}/${id}`}>
+    <Link href={`/${type}/${id}`} passHref>
       <div className="transition duration-300 p-4 rounded cursor-pointer hover:bg-[#282828] bg-paper">
         {images.length > 0 ? (
           <img
