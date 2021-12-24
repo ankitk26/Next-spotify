@@ -1,9 +1,9 @@
 ## To-do
 
-- [ ] Upgrade next-auth to v4
-- [ ] Fix thumbnails in the card
+- [x] Upgrade next-auth to v4
+- [x] Fix thumbnails in the card
 - [ ] Infinite pagination
-- [ ] Improve authentication check
+- [x] Improve authentication check
 - [ ] Add colors to headers
 - [ ] Improve track player
 - [ ] Shuffle play or play all feature
