@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import { getToken } from "next-auth/jwt";
 import { getSession } from "next-auth/react";
 import AlbumList from "../components/AlbumList";
 import Heading from "../components/Heading";
