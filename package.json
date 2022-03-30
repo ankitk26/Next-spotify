@@ -15,7 +15,8 @@
     "next-auth": "^4.0.5",
     "nprogress": "^0.2.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
     "@types/nprogress": "^0.2.0",

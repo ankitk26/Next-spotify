@@ -3,6 +3,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useSpotify } from "../context/SpotifyContext";
+import { RiHome5Fill, RiHome5Line } from "react-icons/ri";
+import { IoSearchOutline } from "react-icons/io5";
+import { IoMdList } from "react-icons/io";
 
 const activeLink = "bg-[#282828] text-white";
 const inactiveLink = "bg-transparent text-gray";
@@ -21,7 +24,7 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="h-full fixed top-0 left-0 w-64  bg-black">
+    <aside className="fixed top-0 left-0 w-64 h-full bg-black">
       <div className="flex flex-col items-center h-full m-5 mt-5">
         <Image
           src="/images/spotify_logo.png"
@@ -39,7 +42,11 @@ export default function Sidebar() {
                   router.pathname === "/" ? activeLink : inactiveLink
                 } flex text-sm items-center gap-3 p-2 rounded`}
               >
-                <span className="material-icons">home</span>
+                {router.pathname === "/" ? (
+                  <RiHome5Fill className="text-2xl" />
+                ) : (
+                  <RiHome5Line className="text-2xl" />
+                )}
                 <span className="font-bold">Home</span>
               </li>
             </a>
@@ -52,7 +59,8 @@ export default function Sidebar() {
                   router.pathname === "/search" ? activeLink : inactiveLink
                 } flex items-center gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
               >
-                <span className="material-icons">search</span>
+                <IoSearchOutline className="text-2xl" />
+
                 <span className="font-bold">Search</span>
               </li>
             </a>
@@ -68,7 +76,7 @@ export default function Sidebar() {
                     : inactiveLink
                 } flex items-center gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
               >
-                <span className="material-icons">list</span>
+                <IoMdList className="text-2xl" />
                 <span className="font-bold">Your Library</span>
               </li>
             </a>
@@ -100,7 +108,7 @@ export default function Sidebar() {
 
         <ul
           id="sidebar-playlists"
-          className="flex flex-col pr-3 w-full overflow-x-hidden gap-3 mt-5 text-sm text-gray"
+          className="flex flex-col w-full gap-3 pr-3 mt-5 overflow-x-hidden text-sm text-gray"
         >
           {playlists?.map((playlist) => (
             <Link key={playlist.id} href={`/playlist/${playlist.id}`}>

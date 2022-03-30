@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useSpotify } from "../context/SpotifyContext";
+import { IoSearchOutline, IoCloseOutline } from "react-icons/io5";
 
 export default function SearchInput() {
   const router = useRouter();
@@ -21,7 +22,8 @@ export default function SearchInput() {
       className="flex items-center justify-between w-full gap-3 px-3 py-1.5 bg-white rounded-full"
       onSubmit={handleSubmit}
     >
-      <span className="text-gray material-icons">search</span>
+      <IoSearchOutline className="text-2xl text-[#121212]" />
+
       <input
         type="text"
         className="flex-grow w-full text-sm font-semibold bg-transparent text-paper focus:outline-none"
@@ -30,17 +32,16 @@ export default function SearchInput() {
         onChange={(e) => setQuery(e.target.value)}
         spellCheck={false}
       />
-      <button
-        type="button"
-        className="flex items-center focus:outline-none"
-        onClick={() => setQuery("")}
-      >
-        {query && (
-          <span className="text-gray material-icons hover:text-paper">
-            close
-          </span>
-        )}
-      </button>
+
+      {query && (
+        <button
+          type="button"
+          className="flex items-center focus:outline-none"
+          onClick={() => setQuery("")}
+        >
+          <IoCloseOutline className="text-2xl text-[#121212]" />
+        </button>
+      )}
     </form>
   );
 }

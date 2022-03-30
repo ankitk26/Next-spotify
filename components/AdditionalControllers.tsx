@@ -1,10 +1,13 @@
+import { MdOutlineMicExternalOn, MdQueueMusic } from "react-icons/md";
+import { RiVolumeUpLine } from "react-icons/ri";
+
 export default function AdditionalControllers() {
   return (
     <div className="flex items-center col-span-2 gap-3">
       {/* Icons */}
-      <span className="text-lg text-gray material-icons">mic_external_on</span>
-      <span className="text-lg text-gray material-icons">queue_music</span>
-      <span className="text-lg text-gray material-icons">volume_up</span>
+      <MdOutlineMicExternalOn className="text-gray" />
+      <MdQueueMusic className="text-gray" />
+      <RiVolumeUpLine className="text-gray" />
 
       {/* Volume bar */}
       <div className="w-20 mt-3">

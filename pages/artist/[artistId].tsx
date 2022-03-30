@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
+import { RiMusic2Fill } from "react-icons/ri";
 import AlbumList from "../../components/AlbumList";
 import ArtistList from "../../components/ArtistList";
 import Heading from "../../components/Heading";
@@ -46,9 +47,9 @@ export default function SingleArtist({
                 className="object-contain rounded-full w-52 h-52"
               />
             ) : (
-              <span className="flex items-center justify-center w-52 h-52 bg-paper text-9xl material-icons">
-                audiotrack
-              </span>
+              <div className="w-full h-40">
+                <RiMusic2Fill className="w-full h-full bg-paper " />
+              </div>
             )}
             <div className="flex flex-col items-start gap-3">
               <h2 className="text-5xl font-bold">{artist.name}</h2>

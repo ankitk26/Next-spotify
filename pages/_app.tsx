@@ -4,8 +4,10 @@ import { useRouter } from "next/router";
 import nProgress from "nprogress";
 import { useEffect } from "react";
 import Header from "../components/Header";
+import PlayerTwo from "../components/PlayerTwo";
 import PreviewPlayer from "../components/PreviewPlayer";
 import Sidebar from "../components/Sidebar";
+import PlayerProvider from "../context/PlayerContext";
 import { SpotifyProvider } from "../context/SpotifyContext";
 import "../styles/globals.css";
 import "../styles/nonTailwind.css";
@@ -39,22 +41,23 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SessionProvider session={pageProps.session}>
       <SpotifyProvider>
-        {/* <div className="flex flex-col h-screen"> */}
-        {router.pathname === "/login" ? (
-          <Component {...pageProps} />
-        ) : (
-          <>
-            <Sidebar />
-            <div className="flex flex-col ml-64">
-              <Header />
-              <main className="ml-4 mt-4">
-                <Component {...pageProps} />
-              </main>
-            </div>
-            <PreviewPlayer />
-          </>
-        )}
-        {/* </div> */}
+        <PlayerProvider>
+          {router.pathname === "/login" ? (
+            <Component {...pageProps} />
+          ) : (
+            <>
+              <Sidebar />
+              <div className="flex flex-col ml-64">
+                <Header />
+                <main className="mt-4 ml-4">
+                  <Component {...pageProps} />
+                </main>
+              </div>
+              {/* <PlayerTwo /> */}
+              <PreviewPlayer />
+            </>
+          )}
+        </PlayerProvider>
       </SpotifyProvider>
     </SessionProvider>
   );

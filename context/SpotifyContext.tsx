@@ -28,8 +28,8 @@ export const SpotifyProvider = ({ children }: any) => {
   const [searchResults, setSearchResults] = useState<SearchResults | null>(
     null
   );
-  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [tracksQueue, setTracksQueue] = useState<Track[]>([]);
+  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [query, setQuery] = useState("");
 
   const fetchPlaylists = async () => {

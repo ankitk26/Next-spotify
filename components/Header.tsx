@@ -1,5 +1,7 @@
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { AiOutlineUser } from "react-icons/ai";
+import { MdLogout, MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { useSpotify } from "../context/SpotifyContext";
 import { MySession } from "../types/types";
 import CollectionTabs from "./CollectionTabs";
@@ -31,11 +33,11 @@ export default function Header() {
             className="flex items-center p-1 bg-[#0B0B0A] rounded-full focus:outline-none"
             onClick={() => router.back()}
           >
-            <span className="text-gray material-icons">navigate_before</span>
+            <MdNavigateBefore className="text-2xl text-gray" />
           </button>
 
           <button className="flex items-center p-1 bg-[#0B0B0A] rounded-full focus:outline-none">
-            <span className="text-gray material-icons">navigate_next</span>
+            <MdNavigateNext className="text-2xl text-gray" />
           </button>
         </div>
 
@@ -45,12 +47,10 @@ export default function Header() {
           router.pathname !== "/collection/tracks" && <CollectionTabs />}
       </div>
 
-      <div className="flex items-center gap-8">
-        <div className="flex items-center gap-3 pl-[2px] pr-4 bg-black rounded-full bg-opacity-70 py-[2px]">
+      <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 py-2 pl-2 pr-4 bg-black rounded-full bg-opacity-70">
           {session?.user?.picture === undefined ? (
-            <span className="p-1 rounded-full bg-[#333333] material-icons">
-              person
-            </span>
+            <AiOutlineUser className="bg-[#333333] p-1 rounded-full text-2xl" />
           ) : (
             <img
               src={session?.user?.picture}
@@ -68,7 +68,7 @@ export default function Header() {
             className="flex items-center justify-center bg-black bg-opacity-70 rounded-full h-10 w-10 hover:bg-[#181818] focus:outline-none cursor-pointer"
             onClick={logout}
           >
-            <span className="material-icons">logout</span>
+            <MdLogout />
           </button>
         </div>
       </div>

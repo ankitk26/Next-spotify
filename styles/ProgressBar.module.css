@@ -1,0 +1,28 @@
+.player {
+  width: 60%;
+  -webkit-appearance: none;
+  background-color: #535353;
+  height: 4px;
+  border-radius: 3px;
+  -webkit-transition: 0.2s;
+  transition: all 0.2s;
+}
+
+.player::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #fff;
+}
+
+.player::-moz-range-thumb {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 100%;
+  background: #fff;
+  cursor: pointer;
+}

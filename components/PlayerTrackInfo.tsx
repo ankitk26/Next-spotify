@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Track } from "../types/types";
+import { IoHeart } from "react-icons/io5";
 
 interface IProps {
   currentTrack: Track;
@@ -15,8 +16,8 @@ export default function PlayerTrackInfo({ currentTrack }: IProps) {
           className="w-14 h-14"
         />
       )}
-      <div>
-        <h4 className="text-sm">{currentTrack?.name}</h4>
+      <div className="max-w-full">
+        <h4 className="text-sm truncate">{currentTrack?.name}</h4>
         <Link href={`/artist/${currentTrack?.artists[0].id}`}>
           <a>
             <h5 className="text-xs text-gray">
@@ -25,7 +26,9 @@ export default function PlayerTrackInfo({ currentTrack }: IProps) {
           </a>
         </Link>
       </div>
-      <span className="ml-5 text-xl material-icons text-primary">favorite</span>
+      <div>
+        <IoHeart className="text-xl text-primary" />
+      </div>
     </div>
   );
 }

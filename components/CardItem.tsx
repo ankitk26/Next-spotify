@@ -1,3 +1,5 @@
+import { RiMusic2Fill } from "react-icons/ri";
+
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -36,9 +38,7 @@ export default function CardItem({
           />
         ) : (
           <div className="w-full h-40">
-            <span className="flex items-center justify-center w-full h-full rounded bg-paper text-9xl material-icons">
-              audiotrack
-            </span>
+            <RiMusic2Fill className="w-full h-full bg-paper " />
           </div>
         )}
         <h3 className="mt-5 font-bold truncate">{heading}</h3>

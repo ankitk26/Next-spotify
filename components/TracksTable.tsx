@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Fragment } from "react";
-import { useSpotify } from "../context/SpotifyContext";
+import { MdSchedule } from "react-icons/md";
+import { usePlayer } from "../context/PlayerContext";
 import { Track } from "../types/types";
 import { fmtMSS } from "../utils/formatDuration";
 
@@ -15,7 +15,7 @@ export default function TracksTable({
   noAlbum = false,
   noArtist = false,
 }: IProps) {
-  const { setCurrentTrack } = useSpotify();
+  const { setCurrentTrack } = usePlayer();
 
   const playTrack = (track: Track) => {
     if (track.preview_url) {
@@ -46,7 +46,7 @@ export default function TracksTable({
           )}
 
           <div className="col-span-1 text-sm font-medium tracking-wider text-left uppercase text-gray">
-            <span className="flex items-center material-icons">schedule</span>
+            <MdSchedule className="text-xl" />
           </div>
 
           <div className="col-span-12 my-3 border-b border-gray"></div>

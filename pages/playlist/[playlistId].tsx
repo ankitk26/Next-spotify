@@ -1,6 +1,7 @@
 import parse from "html-react-parser";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
+import { RiMusic2Fill } from "react-icons/ri";
 import Layout from "../../components/Layout";
 import TracksTable from "../../components/TracksTable";
 import styles from "../../styles/Description.module.css";
@@ -25,9 +26,9 @@ export default function Playlist({ playlist }: IProps) {
                 className="object-contain w-60 h-60 "
               />
             ) : (
-              <span className="flex items-center justify-center w-52 h-52 bg-paper text-9xl material-icons">
-                audiotrack
-              </span>
+              <div className="w-full h-40">
+                <RiMusic2Fill className="w-full h-full bg-paper " />
+              </div>
             )}
             <div className="flex flex-col gap-3">
               <h5 className="text-xs font-bold uppercase">{playlist.type}</h5>
