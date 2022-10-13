@@ -1,46 +1,190 @@
-## To-do
 
-- [x] Upgrade next-auth to v4
-- [x] Fix thumbnails in the card
+# Next Spotify
+
+<img src="https://cdn-images-1.medium.com/max/1000/0*mr1yE7_hsk_3mquJ" alt="sample intro image" width="700" />
+
+Next Spotify is a Spotify clone built using Next.js and TailwindCSS. Users can log in with their Spotify account and view the playlists, artists, and albums followed by them.
+
+Working demo for the project - [Link](https://next-spotify-smoky.vercel.app)
+
+## Table of contents
+
+- [Technologies and Libraries used](#technologies)
+- [Features](#features)
+- [To-do features](#todo)
+- [Run locally](#run_locally)
+- [Environment variables](#env)
+- [Data flow](#data_flow)
+- [API Reference](#api)
+- [Screenshots](#screenshots)
+- [Resources](#resources)
+
+
+<section id="technologies" />
+
+## Technologies and Libraries used
+
+- [Next.JS 12](https://nextjs.org/)
+- Typescript
+- [TailwindCSS](https://tailwindcss.com/)
+- [NextAuth.js](https://next-auth.js.org/) for Spotify OAuth authentication
+
+
+<section id="features"/>
+
+## Features
+
+- Log-in into the application using Spotify OAuth through the next-auth package
+- View all the playlists created or followed by the user
+- View liked songs playlist of the user
+- View artists and albums followed by the user
+- Display all the tracks in a playlist, an album, or of an artist
+- Play a track with play/pause controller
+- Search for any playlist, artist, album, or track
+- Browse music based on categories (eg: Rock, Indie, Hip-Hop)
+- Show latest releases
+
+<section id="todo" />
+
+## To-do features
+
 - [ ] Infinite pagination
-- [x] Improve authentication check
 - [ ] Add colors to headers
 - [ ] Improve track player
-- [ ] Shuffle play or play all feature
+- [ ] Shuffle play or play all tracks in album or playlist
 
-<hr/>
+*Any other features can be suggested under the issues section of the repo*
+<section id="run_locally"/>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Run Locally
 
-## Getting Started
-
-First, run the development server:
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/ankitk26/Next-spotify.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+  cd Next-spotify
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Install dependencies
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  npm install
+  # or
+  yarn
+```
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+Start the server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+  npm run dev
+  # or
+  yarn dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+<section id="env"/>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To run this project, you will need to add the following environment variables to your .env file
+
+`SPOTIFY_CLIENT_SECRET`
+
+`SPOTIFY_CLIENT_ID`
+
+`NEXTAUTH_URL`= http://localhost:3000
+
+`NEXTAUTH_SECRET`
+
+#### Spotify API credentials
+
+- **Step 1**: Go to the [Spotify's developer dashboard](https://developer.spotify.com/dashboard/) and log in with your Spotify credentials
+- **Step 2**: Click on **CREATE AN APP** button on the applications page. Enter the name and description for the application.
+- **Step 3**: After creating the application, copy the **Client ID** and **Client Secret** and paste it into the .env file.
+- **Step 4**: In the application page itself, click on **Edit Settings** button. Under the **Redirect URIs** section, add the redirect URL in the text field provided as follows:
+
+  `http://localhost:3000/api/auth/callback/spotify`
+
+  When the project is deployed, add another redirect URL as follows:
+
+  `https://xyz.domain/api/auth/callback/spotify`
+
+#### NEXTAUTH_SECRET
+
+To create a secret key, open your terminal, run the command below and copy the value generated to the .env file.
+
+~~~bash
+openssl rand -base64 32
+~~~
+
+
+<section id="data_flow"/>
+
+## Data flow
+
+<img src="https://cdn-images-1.medium.com/max/1000/1*wRT-57cGgmzJETq19SkVqA.png" alt="data flow" />
+
+<section id="api"/>
+
+## API Reference
+
+The API endpoints and their response are listed in [https://developer.spotify.com/console/](https://developer.spotify.com/console/)
+
+<section id="screenshots"/>
+
+## Screenshots
+
+**Home page**
+
+<img src='./public/readme/home.png' alt="home page">
+
+<br><br>
+
+**Browse categories**
+
+<img src='./public/readme/browse.png' alt="home page">
+
+<br><br>
+
+**Search**
+
+<img src='./public/readme/search.png' alt="home page">
+
+<br><br>
+
+**View Artist**
+
+<img src='./public/readme/artist.png' alt="home page">
+
+<br><br>
+
+**View Album**
+
+<img src='./public/readme/album.png' alt="home page">
+
+<br><br>
+
+**View Playlist**
+
+<img src='./public/readme/playlist.png' alt="home page">
+
+<br><br>
+
+**Music player**
+
+<img src='./public/readme/player.png' alt="home page">
+
+<section id="resources"/>
+
+## Resources
+
+- [Spotify Web API documentation](https://developer.spotify.com/console/)
+- Font used - [Montserrat](https://fonts.google.com/specimen/Montserrat)
+- [NextAuth.js Documentation](https://next-auth.js.org/getting-started/example)
+- [NextAuth.js Spotify Provider](https://next-auth.js.org/providers/spotify)
