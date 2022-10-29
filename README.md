@@ -114,6 +114,7 @@ To run this project, you will need to add the following environment variables to
   When the project is deployed, add another redirect URL as follows:
 
   `https://xyz.domain/api/auth/callback/spotify`
+- **Step 5**: In the **Users and Access** page, add the email addresses for the accounts you want to test the application for. Your own account is enabled by default so no there's no need to add your own account's email.
 
 #### NEXTAUTH_SECRET
 
