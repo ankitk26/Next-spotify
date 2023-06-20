@@ -7,7 +7,10 @@ Next Spotify is a Spotify clone built using Next.js and TailwindCSS. Users can l
 
 Working demo for the project - [Link](https://next-spotify-smoky.vercel.app)
 
-<b>Update </b>: Currently users cannot log in to the demo link. The application would work in the local system.
+## *Update*  
+Next-Spotify v2 is out in this [repository](https://github.com/ankitk26/Next-Spotify-v2). The updated version is built using Next.js app router and server component along with improved UI.
+
+<b>Note </b>: Currently users cannot log in to the demo link. The application would work in the local system.
 
 ## Table of contents
 
