@@ -6,7 +6,7 @@ import PlayerTrackInfo from "./PlayerTrackInfo";
 export default function PlayerTwo() {
   const { currentTrack } = useSpotify();
 
-  const [audio, setAudio] = useState<HTMLAudioElement>(null);
+  const [audio, setAudio] = useState<HTMLAudioElement>(new HTMLAudioElement());
   const [playing, setPlaying] = useState(false);
 
   const toggle = () => {

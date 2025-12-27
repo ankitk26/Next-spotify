@@ -17,11 +17,11 @@ export default function SingleAlbum({ album }: IProps) {
       <div className="flex items-end gap-6">
         {album && (
           <>
-            {album.images.length > 0 ? (
+            {album.images && album.images.length > 0 ? (
               <img
                 alt={album.name}
                 className="h-52 w-52 object-contain"
-                src={album.images[0].url}
+                src={album.images[0].url ?? "/placeholder"}
               />
             ) : (
               <div className="h-40 w-full">
@@ -37,16 +37,16 @@ export default function SingleAlbum({ album }: IProps) {
               <div className="flex items-center gap-5 text-sm">
                 <span className="font-bold">{album.artists[0].name}</span>
                 <span>{album.release_date}</span>
-                {album.tracks.items.length > 0 && (
+                {album.tracks && album.tracks.items.length > 0 && (
                   <span className="text-gray">{album.tracks.total} songs</span>
-                )}{" "}
+                )}
               </div>
             </div>
           </>
         )}
       </div>
 
-      <TracksTable noAlbum tracks={album?.tracks.items} />
+      <TracksTable noAlbum tracks={album?.tracks ? album.tracks.items : []} />
     </Layout>
   );
 }
@@ -63,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   }
 
-  const albumId = ctx.params.albumId;
+  const albumId = ctx.params?.albumId;
   const album = await customGet(
     `https://api.spotify.com/v1/albums/${albumId}`,
     session

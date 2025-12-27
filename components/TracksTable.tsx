@@ -76,7 +76,7 @@ export default function TracksTable({
                     <img
                       alt={track.name}
                       className="h-10 w-10 object-contain"
-                      src={track.album.images?.[0].url}
+                      src={track.album.images?.[0].url ?? "/placeholder"}
                     />
                   </div>
                 )}

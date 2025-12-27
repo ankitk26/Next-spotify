@@ -40,11 +40,11 @@ export default function SingleArtist({
       <div className="flex items-end gap-6">
         {artist && (
           <>
-            {artist.images.length > 0 ? (
+            {artist.images && artist.images.length > 0 ? (
               <img
                 alt={artist.name}
                 className="h-52 w-52 rounded-full object-contain"
-                src={artist.images[0].url}
+                src={artist.images[0].url ?? "/placeholder"}
               />
             ) : (
               <div className="h-40 w-full">
@@ -54,12 +54,14 @@ export default function SingleArtist({
             <div className="flex flex-col items-start gap-3">
               <h2 className="font-bold text-5xl">{artist.name}</h2>
               <span className="text-sm">
-                {artist.followers.total.toLocaleString()} followers
+                {artist.followers && artist.followers.total.toLocaleString()}{" "}
+                followers
               </span>
               <div className="flex items-center gap-5 text-sm">
-                {artist.genres.map((genre) => (
-                  <span key={genre}>{genre}</span>
-                ))}
+                {artist.genres &&
+                  artist.genres.map((genre) => (
+                    <span key={genre}>{genre}</span>
+                  ))}
               </div>
             </div>
           </>
@@ -123,7 +125,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   }
 
-  const artistId = ctx.params.artistId;
+  const artistId = ctx.params?.artistId;
   const artist = await customGet(
     `https://api.spotify.com/v1/artists/${artistId}`,
     session

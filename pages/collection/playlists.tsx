@@ -29,7 +29,7 @@ export default function UserPlaylists({ likedTracks }: IProps) {
             }}
           >
             <div className="inline">
-              {likedTracks?.items.map(({ track }) => (
+              {likedTracks?.items?.map(({ track }) => (
                 <span className="mr-3" key={track.id}>
                   <span>{track.artists[0].name}</span>{" "}
                   <span className="text-white opacity-70">{track.name}</span>

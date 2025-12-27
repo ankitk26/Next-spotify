@@ -13,7 +13,7 @@ export default function PlayerTrackInfo({ currentTrack }: IProps) {
         <img
           alt={currentTrack.name}
           className="h-14 w-14"
-          src={currentTrack.album.images?.[0].url}
+          src={currentTrack.album.images?.[0].url ?? "/placeholder"}
         />
       )}
       <div className="max-w-full">

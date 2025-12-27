@@ -12,7 +12,7 @@ interface IProps {
 }
 
 export default function LikedTracks({ likedTracks }: IProps) {
-  const { data: session }: { data: MySession } = useSession();
+  const { data: session }: { data: MySession | null } = useSession();
 
   return (
     <Layout title="Spotify - Liked Songs">
@@ -30,15 +30,21 @@ export default function LikedTracks({ likedTracks }: IProps) {
               <h2 className="font-bold text-5xl">Liked Songs</h2>
 
               <div className="flex items-center gap-5 text-sm">
-                <span className="font-bold">{session?.user.name}</span>
-                {likedTracks.items.length > 0 && (
+                <span className="font-bold">{session?.user?.name}</span>
+                {likedTracks.items && likedTracks.items.length > 0 && (
                   <span className="text-gray">{likedTracks.total} songs</span>
                 )}{" "}
               </div>
             </div>
           </div>
 
-          <TracksTable tracks={likedTracks.items.map((item) => item.track)} />
+          <TracksTable
+            tracks={
+              likedTracks.items
+                ? likedTracks.items.map((item) => item.track)
+                : []
+            }
+          />
         </>
       )}
     </Layout>

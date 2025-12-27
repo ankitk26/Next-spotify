@@ -53,9 +53,9 @@ export default function Header() {
             <AiOutlineUser className="rounded-full bg-[#333333] p-1 text-2xl" />
           ) : (
             <img
-              alt={session?.user?.name}
+              alt={session?.user?.name ?? ""}
               className="h-8 w-8 rounded-full object-contain"
-              src={session?.user?.picture}
+              src={session?.user?.picture ?? "/placeholder"}
             />
           )}
           <span className="font-bold text-sm tracking-wide">

@@ -30,7 +30,7 @@ export default function CategoryPlaylists({ categoryName, playlists }: IProps) {
 
   return (
     <Layout title={`Spotify - ${capitalizedCategory}`}>
-      <Heading className="capitalize" text={categoryName} />
+      <Heading className="capitalize" text={categoryName ?? ""} />
       <PlaylistList playlists={playlists?.items} />
     </Layout>
   );
@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     session
   );
 
-  const categoryName = categoryId.toString().split("_").join(" ");
+  const categoryName = categoryId?.toString().split("_").join(" ");
 
   return { props: { categoryName, playlists: playlists.playlists } };
 };

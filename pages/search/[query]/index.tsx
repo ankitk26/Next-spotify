@@ -37,7 +37,7 @@ export default function Search({ query, searchResults }: IProps) {
               </a>
             </Link>
 
-            {searchResults.tracks.items?.slice(0, 5).map((track) => (
+            {searchResults.tracks?.items?.slice(0, 5).map((track) => (
               <div
                 className={`col-span-12 grid grid-cols-12 p-1 ${
                   track.preview_url ? "" : "opacity-50"
@@ -50,7 +50,8 @@ export default function Search({ query, searchResults }: IProps) {
                       <img
                         alt={track.name}
                         className="h-10 w-10 object-contain"
-                        src={track.album.images[0].url}
+                        // src={track.album.images?[0]. ?? "/placeholder"}
+                        src="/placeholder"
                       />
                     </div>
 
@@ -92,7 +93,7 @@ export default function Search({ query, searchResults }: IProps) {
             ))}
           </div>
 
-          {searchResults.artists.items.length > 0 && (
+          {searchResults.artists && searchResults.artists.items.length > 0 && (
             <div className="mt-5">
               <Link href={`/search/${query}/artists`}>
                 <a>
@@ -109,7 +110,13 @@ export default function Search({ query, searchResults }: IProps) {
                 <Heading text="Albums" />
               </a>
             </Link>
-            <AlbumList albums={searchResults.albums.items.slice(0, 6)} />
+            <AlbumList
+              albums={
+                searchResults.albums
+                  ? searchResults.albums.items.slice(0, 6)
+                  : []
+              }
+            />
           </div>
 
           <div className="mt-5">
@@ -119,7 +126,11 @@ export default function Search({ query, searchResults }: IProps) {
               </a>
             </Link>
             <PlaylistList
-              playlists={searchResults.playlists.items.slice(0, 6)}
+              playlists={
+                searchResults.playlists
+                  ? searchResults.playlists.items.slice(0, 6)
+                  : []
+              }
             />
           </div>
         </>

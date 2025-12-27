@@ -21,7 +21,7 @@ export default function CardItem({
   imageRounded = false,
   type,
 }: IProps) {
-  const thumbnailRef = useRef<HTMLImageElement>();
+  const thumbnailRef = useRef<HTMLImageElement>(null);
 
   return (
     <Link href={`/${type}/${id}`} passHref>
