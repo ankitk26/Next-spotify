@@ -9,23 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "axios": "^0.24.0",
-    "html-react-parser": "^1.4.4",
-    "next": "^12.0.7",
-    "next-auth": "^4.0.5",
+    "axios": "^1.13.2",
+    "html-react-parser": "^5.2.11",
+    "next": "^16.1.1",
+    "next-auth": "^4.24.13",
     "nprogress": "^0.2.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-icons": "^4.3.1"
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
-    "@types/nprogress": "^0.2.0",
-    "@types/react": "^17.0.3",
-    "autoprefixer": "^10.2.5",
-    "eslint": "8.5.0",
-    "eslint-config-next": "12.0.7",
-    "postcss": "^8.2.12",
-    "tailwindcss": "^3.0.7",
-    "typescript": "^4.2.4"
+    "@biomejs/biome": "2.3.10",
+    "@types/nprogress": "^0.2.3",
+    "@types/react": "^19.2.7",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "ultracite": "6.5.0"
   }
 }
