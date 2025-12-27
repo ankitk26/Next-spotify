@@ -1,12 +1,12 @@
 import axios from "axios";
 import {
   createContext,
-  Dispatch,
-  SetStateAction,
+  type Dispatch,
+  type SetStateAction,
   useContext,
   useState,
 } from "react";
-import { PlaylistType, SearchResults, Track } from "../types/types";
+import type { PlaylistType, SearchResults, Track } from "../types/types";
 
 interface ContextProps {
   playlists: PlaylistType[];

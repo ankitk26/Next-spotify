@@ -34,8 +34,8 @@ export default function PlayerTwo() {
 
   return (
     <footer
-      className={`sticky bottom-0 grid grid-cols-12 items-center justify-between px-5 border-[#272727] bg-player ${
-        currentTrack ? "py-3 border-t" : "py-0 border-0"
+      className={`sticky bottom-0 grid grid-cols-12 items-center justify-between border-[#272727] bg-player px-5 ${
+        currentTrack ? "border-t py-3" : "border-0 py-0"
       }`}
     >
       {currentTrack && (

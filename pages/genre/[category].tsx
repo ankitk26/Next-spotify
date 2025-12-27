@@ -1,10 +1,10 @@
-import { GetServerSideProps } from "next";
+import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Heading from "../../components/Heading";
 import Layout from "../../components/Layout";
 import PlaylistList from "../../components/PlaylistList";
-import { PlaylistType } from "../../types/types";
+import type { PlaylistType } from "../../types/types";
 import { customGet } from "../../utils/customGet";
 import { isAuthenticated } from "../../utils/isAuthenticated";
 
@@ -30,7 +30,7 @@ export default function CategoryPlaylists({ categoryName, playlists }: IProps) {
 
   return (
     <Layout title={`Spotify - ${capitalizedCategory}`}>
-      <Heading text={categoryName} className="capitalize" />
+      <Heading className="capitalize" text={categoryName} />
       <PlaylistList playlists={playlists?.items} />
     </Layout>
   );

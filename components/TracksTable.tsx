@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MdSchedule } from "react-icons/md";
 import { usePlayer } from "../context/PlayerContext";
-import { Track } from "../types/types";
+import type { Track } from "../types/types";
 import { fmtMSS } from "../utils/formatDuration";
 
 interface IProps {
@@ -24,66 +24,66 @@ export default function TracksTable({
   };
 
   return (
-    <div className="grid grid-cols-12 gap-2 p-1 mt-8">
+    <div className="mt-8 grid grid-cols-12 gap-2 p-1">
       {!noArtist && (
         <>
-          <div className="col-span-1 font-semibold tracking-wider text-left text-white uppercase">
+          <div className="col-span-1 text-left font-semibold text-white uppercase tracking-wider">
             #
           </div>
 
           <div
             className={`${
               noAlbum ? "col-span-10" : "col-span-6"
-            } text-sm font-medium tracking-wider text-left uppercase text-gray`}
+            } text-left font-medium text-gray text-sm uppercase tracking-wider`}
           >
             Title
           </div>
 
           {!noAlbum && (
-            <div className="col-span-4 text-sm font-medium tracking-wider text-left uppercase text-gray">
+            <div className="col-span-4 text-left font-medium text-gray text-sm uppercase tracking-wider">
               Album
             </div>
           )}
 
-          <div className="col-span-1 text-sm font-medium tracking-wider text-left uppercase text-gray">
+          <div className="col-span-1 text-left font-medium text-gray text-sm uppercase tracking-wider">
             <MdSchedule className="text-xl" />
           </div>
 
-          <div className="col-span-12 my-3 border-b border-gray"></div>
+          <div className="col-span-12 my-3 border-gray border-b" />
         </>
       )}
 
-      <div className="w-full col-span-12">
+      <div className="col-span-12 w-full">
         {tracks?.map((track, index) => (
           <div
             className={`grid grid-cols-12 ${
-              !track.preview_url ? "opacity-50" : ""
+              track.preview_url ? "" : "opacity-50"
             }`}
             key={track.id + index + 1}
           >
-            <div className="flex items-center col-span-1 my-3 text-sm text-gray">
+            <div className="col-span-1 my-3 flex items-center text-gray text-sm">
               {index + 1}
             </div>
 
             <div
               className={`${
                 noAlbum ? "col-span-10" : "col-span-6"
-              } flex items-center w-full  my-3`}
+              } my-3 flex w-full items-center`}
             >
-              <div className="flex items-center w-full gap-4">
+              <div className="flex w-full items-center gap-4">
                 {(!noAlbum || noArtist) && (
-                  <div className="flex-shrink-0 w-10 h-10">
+                  <div className="h-10 w-10 flex-shrink-0">
                     <img
-                      src={track.album.images?.[0].url}
                       alt={track.name}
-                      className="object-contain w-10 h-10"
+                      className="h-10 w-10 object-contain"
+                      src={track.album.images?.[0].url}
                     />
                   </div>
                 )}
 
                 <div className="w-full">
                   <h2
-                    className={`w-10/12 text-sm font-medium truncate ${
+                    className={`w-10/12 truncate font-medium text-sm ${
                       track.preview_url
                         ? "cursor-pointer hover:underline"
                         : "cursor-default"
@@ -94,12 +94,12 @@ export default function TracksTable({
                   </h2>
 
                   {!noArtist && (
-                    <div className="flex flex-wrap items-center w-10/12 gap-1 text-sm text-gray">
-                      <span className="truncate ">
+                    <div className="flex w-10/12 flex-wrap items-center gap-1 text-gray text-sm">
+                      <span className="truncate">
                         {track.artists.map((artist, index) => (
                           <Link
-                            key={artist.id + track.id}
                             href={`/artist/${artist.id}`}
+                            key={artist.id + track.id}
                           >
                             <a>
                               <span className="hover:text-white hover:underline">
@@ -116,7 +116,7 @@ export default function TracksTable({
             </div>
 
             {!noAlbum && (
-              <div className="flex items-center w-10/12 col-span-4 my-3 text-sm text-gray">
+              <div className="col-span-4 my-3 flex w-10/12 items-center text-gray text-sm">
                 <Link href={`/album/${track.album.id}`}>
                   <a className="truncate hover:text-white hover:underline">
                     {track.album.name}
@@ -125,7 +125,7 @@ export default function TracksTable({
               </div>
             )}
 
-            <div className="flex items-center col-span-1 my-3 text-sm text-gray ">
+            <div className="col-span-1 my-3 flex items-center text-gray text-sm">
               {fmtMSS(track.duration_ms)}
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { PlaylistType } from "../types/types";
+import type { PlaylistType } from "../types/types";
 import CardItem from "./CardItem";
 import CardItemGrid from "./CardItemGrid";
 
@@ -11,12 +11,12 @@ export default function PlaylistList({ playlists }: IProps) {
     <CardItemGrid>
       {playlists?.map((playlist) => (
         <CardItem
-          key={playlist.id}
-          id={playlist.id}
-          heading={playlist.name}
-          subheading={playlist.description}
           altTitle={playlist.name}
+          heading={playlist.name}
+          id={playlist.id}
           images={playlist.images}
+          key={playlist.id}
+          subheading={playlist.description}
           type="playlist"
         />
       ))}

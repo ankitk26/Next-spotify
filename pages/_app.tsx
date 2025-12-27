@@ -1,10 +1,9 @@
-import { SessionProvider } from "next-auth/react";
-import { AppProps } from "next/app";
+import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
+import { SessionProvider } from "next-auth/react";
 import nProgress from "nprogress";
 import { useEffect } from "react";
 import Header from "../components/Header";
-import PlayerTwo from "../components/PlayerTwo";
 import PreviewPlayer from "../components/PreviewPlayer";
 import Sidebar from "../components/Sidebar";
 import PlayerProvider from "../context/PlayerContext";
@@ -47,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           ) : (
             <>
               <Sidebar />
-              <div className="flex flex-col ml-64">
+              <div className="ml-64 flex flex-col">
                 <Header />
                 <main className="mt-4 ml-4">
                   <Component {...pageProps} />

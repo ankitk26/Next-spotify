@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import CardItem from "../../components/CardItem";
 import CardItemGrid from "../../components/CardItemGrid";
@@ -15,11 +15,11 @@ export default function Search({ categories }) {
       <CardItemGrid>
         {categories?.categories.items.map((category) => (
           <CardItem
-            key={category.id}
             altTitle={category.name}
             heading={category.name}
             id={category.id}
             images={category.icons}
+            key={category.id}
             type="genre"
           />
         ))}

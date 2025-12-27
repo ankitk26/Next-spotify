@@ -1,9 +1,9 @@
-import { GetServerSideProps } from "next";
+import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import Heading from "../../../components/Heading";
 import Layout from "../../../components/Layout";
 import PlaylistList from "../../../components/PlaylistList";
-import { PlaylistType } from "../../../types/types";
+import type { PlaylistType } from "../../../types/types";
 import { customGet } from "../../../utils/customGet";
 import { isAuthenticated } from "../../../utils/isAuthenticated";
 

@@ -1,5 +1,5 @@
 import CardItem from "../components/CardItem";
-import { Album } from "../types/types";
+import type { Album } from "../types/types";
 import CardItemGrid from "./CardItemGrid";
 
 interface IProps {
@@ -11,11 +11,11 @@ export default function AlbumList({ albums }: IProps) {
     <CardItemGrid>
       {albums?.map((album) => (
         <CardItem
-          key={album.id}
-          id={album.id}
-          heading={album.name}
-          images={album.images}
           altTitle={album.name}
+          heading={album.name}
+          id={album.id}
+          images={album.images}
+          key={album.id}
           subheading={album.artists[0].name}
           type="album"
         />

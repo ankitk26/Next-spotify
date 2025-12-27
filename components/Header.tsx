@@ -1,9 +1,9 @@
-import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { signOut, useSession } from "next-auth/react";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdLogout, MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { useSpotify } from "../context/SpotifyContext";
-import { MySession } from "../types/types";
+import type { MySession } from "../types/types";
 import CollectionTabs from "./CollectionTabs";
 import SearchInput from "./SearchInput";
 
@@ -26,17 +26,17 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between w-full p-4 pl-10 bg-[#111011]">
-      <div className="flex items-center gap-10 w-[32rem]">
+    <header className="sticky top-0 z-50 flex w-full items-center justify-between bg-[#111011] p-4 pl-10">
+      <div className="flex w-[32rem] items-center gap-10">
         <div className="flex items-center gap-3">
           <button
-            className="flex items-center p-1 bg-[#0B0B0A] rounded-full focus:outline-none"
+            className="flex items-center rounded-full bg-[#0B0B0A] p-1 focus:outline-none"
             onClick={() => router.back()}
           >
             <MdNavigateBefore className="text-2xl text-gray" />
           </button>
 
-          <button className="flex items-center p-1 bg-[#0B0B0A] rounded-full focus:outline-none">
+          <button className="flex items-center rounded-full bg-[#0B0B0A] p-1 focus:outline-none">
             <MdNavigateNext className="text-2xl text-gray" />
           </button>
         </div>
@@ -48,24 +48,24 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-6">
-        <div className="flex items-center gap-3 py-2 pl-2 pr-4 bg-black rounded-full bg-opacity-70">
+        <div className="flex items-center gap-3 rounded-full bg-black bg-opacity-70 py-2 pr-4 pl-2">
           {session?.user?.picture === undefined ? (
-            <AiOutlineUser className="bg-[#333333] p-1 rounded-full text-2xl" />
+            <AiOutlineUser className="rounded-full bg-[#333333] p-1 text-2xl" />
           ) : (
             <img
-              src={session?.user?.picture}
-              className="object-contain w-8 h-8 rounded-full"
               alt={session?.user?.name}
+              className="h-8 w-8 rounded-full object-contain"
+              src={session?.user?.picture}
             />
           )}
-          <span className="text-sm font-bold tracking-wide">
+          <span className="font-bold text-sm tracking-wide">
             {session?.user?.name}
           </span>
         </div>
 
         <div>
           <button
-            className="flex items-center justify-center bg-black bg-opacity-70 rounded-full h-10 w-10 hover:bg-[#181818] focus:outline-none cursor-pointer"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-70 hover:bg-[#181818] focus:outline-none"
             onClick={logout}
           >
             <MdLogout />

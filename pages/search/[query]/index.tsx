@@ -1,14 +1,13 @@
-import { GetServerSideProps } from "next";
-import { getSession } from "next-auth/react";
+import type { GetServerSideProps } from "next";
 import Link from "next/link";
-import { Fragment } from "react";
+import { getSession } from "next-auth/react";
 import AlbumList from "../../../components/AlbumList";
 import ArtistList from "../../../components/ArtistList";
 import Heading from "../../../components/Heading";
 import Layout from "../../../components/Layout";
 import PlaylistList from "../../../components/PlaylistList";
 import { useSpotify } from "../../../context/SpotifyContext";
-import { SearchResults, Track } from "../../../types/types";
+import type { SearchResults, Track } from "../../../types/types";
 import { customGet } from "../../../utils/customGet";
 import { fmtMSS } from "../../../utils/formatDuration";
 import { isAuthenticated } from "../../../utils/isAuthenticated";
@@ -40,24 +39,24 @@ export default function Search({ query, searchResults }: IProps) {
 
             {searchResults.tracks.items?.slice(0, 5).map((track) => (
               <div
-                className={`grid grid-cols-12 col-span-12 p-1 ${
-                  !track.preview_url ? "opacity-50" : ""
+                className={`col-span-12 grid grid-cols-12 p-1 ${
+                  track.preview_url ? "" : "opacity-50"
                 }`}
                 key={track.id}
               >
-                <div className="flex items-center w-full col-span-11 my-3">
-                  <div className="flex items-center w-full gap-4">
-                    <div className="flex-shrink-0 w-10 h-10">
+                <div className="col-span-11 my-3 flex w-full items-center">
+                  <div className="flex w-full items-center gap-4">
+                    <div className="h-10 w-10 flex-shrink-0">
                       <img
-                        src={track.album.images[0].url}
                         alt={track.name}
-                        className="object-contain w-10 h-10"
+                        className="h-10 w-10 object-contain"
+                        src={track.album.images[0].url}
                       />
                     </div>
 
                     <div className="w-full">
                       <div
-                        className={`w-10/12 text-sm font-medium truncate ${
+                        className={`w-10/12 truncate font-medium text-sm ${
                           track.preview_url
                             ? "cursor-pointer hover:underline"
                             : "cursor-default"
@@ -67,10 +66,10 @@ export default function Search({ query, searchResults }: IProps) {
                         {track.name}
                       </div>
 
-                      <div className="flex flex-wrap items-center w-10/12 gap-1 text-sm text-gray">
-                        <span className="truncate ">
+                      <div className="flex w-10/12 flex-wrap items-center gap-1 text-gray text-sm">
+                        <span className="truncate">
                           {track.artists.map((artist, index) => (
-                            <Link key={artist.id} href={`/artist/${artist.id}`}>
+                            <Link href={`/artist/${artist.id}`} key={artist.id}>
                               <a>
                                 <span className="hover:text-white hover:underline">
                                   {index !== 0
@@ -86,7 +85,7 @@ export default function Search({ query, searchResults }: IProps) {
                   </div>
                 </div>
 
-                <div className="flex items-center col-span-1 my-3 text-sm text-gray ">
+                <div className="col-span-1 my-3 flex items-center text-gray text-sm">
                   {fmtMSS(track.duration_ms)}
                 </div>
               </div>

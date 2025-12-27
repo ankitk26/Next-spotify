@@ -1,12 +1,12 @@
-import { GetServerSideProps } from "next";
-import { getSession } from "next-auth/react";
+import type { GetServerSideProps } from "next";
 import Link from "next/link";
+import { getSession } from "next-auth/react";
 import CardItem from "../../components/CardItem";
 import CardItemGrid from "../../components/CardItemGrid";
 import Heading from "../../components/Heading";
 import Layout from "../../components/Layout";
 import { useSpotify } from "../../context/SpotifyContext";
-import { PlaylistType } from "../../types/types";
+import type { PlaylistType } from "../../types/types";
 import { customGet } from "../../utils/customGet";
 import { isAuthenticated } from "../../utils/isAuthenticated";
 
@@ -23,21 +23,21 @@ export default function UserPlaylists({ likedTracks }: IProps) {
       <CardItemGrid>
         <Link href="/collection/tracks" passHref>
           <div
-            className="flex flex-col items-start justify-end col-span-2 gap-8 p-4 rounded cursor-pointer"
+            className="col-span-2 flex cursor-pointer flex-col items-start justify-end gap-8 rounded p-4"
             style={{
               background: "linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%)",
             }}
           >
             <div className="inline">
               {likedTracks?.items.map(({ track }) => (
-                <span key={track.id} className="mr-3">
+                <span className="mr-3" key={track.id}>
                   <span>{track.artists[0].name}</span>{" "}
                   <span className="text-white opacity-70">{track.name}</span>
                 </span>
               ))}
             </div>
             <div>
-              <h1 className="text-4xl font-bold">Liked songs</h1>
+              <h1 className="font-bold text-4xl">Liked songs</h1>
               <h3 className="mt-1">{likedTracks.total} liked songs</h3>
             </div>
           </div>
@@ -45,11 +45,11 @@ export default function UserPlaylists({ likedTracks }: IProps) {
 
         {playlists?.map((playlist) => (
           <CardItem
-            key={playlist.id}
+            altTitle={playlist.name}
             heading={playlist.name}
             id={playlist.id}
             images={playlist.images}
-            altTitle={playlist.name}
+            key={playlist.id}
             subheading={playlist.description}
             type="playlist"
           />
@@ -72,7 +72,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 
   const likedTracks = await customGet(
-    `https://api.spotify.com/v1/me/tracks?market=from_token&limit=5`,
+    "https://api.spotify.com/v1/me/tracks?market=from_token&limit=5",
     session
   );
 

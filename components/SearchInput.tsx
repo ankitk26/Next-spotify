@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
+import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
 import { useSpotify } from "../context/SpotifyContext";
-import { IoSearchOutline, IoCloseOutline } from "react-icons/io5";
 
 export default function SearchInput() {
   const router = useRouter();
@@ -19,25 +19,25 @@ export default function SearchInput() {
 
   return (
     <form
-      className="flex items-center justify-between w-full gap-3 px-3 py-1.5 bg-white rounded-full"
+      className="flex w-full items-center justify-between gap-3 rounded-full bg-white px-3 py-1.5"
       onSubmit={handleSubmit}
     >
       <IoSearchOutline className="text-2xl text-[#121212]" />
 
       <input
-        type="text"
-        className="flex-grow w-full text-sm font-semibold bg-transparent text-paper focus:outline-none"
-        placeholder="Artists and songs"
-        value={query}
+        className="w-full flex-grow bg-transparent font-semibold text-paper text-sm focus:outline-none"
         onChange={(e) => setQuery(e.target.value)}
+        placeholder="Artists and songs"
         spellCheck={false}
+        type="text"
+        value={query}
       />
 
       {query && (
         <button
-          type="button"
           className="flex items-center focus:outline-none"
           onClick={() => setQuery("")}
+          type="button"
         >
           <IoCloseOutline className="text-2xl text-[#121212]" />
         </button>

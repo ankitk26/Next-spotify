@@ -16,7 +16,7 @@ export default function CollectionTabs() {
                 router.pathname === `/collection/${tab}`
                   ? "bg-[#323233]"
                   : "bg-transparent"
-              } text-white rounded capitalize text-sm font-bold px-6 py-3`}
+              } rounded px-6 py-3 font-bold text-sm text-white capitalize`}
             >
               {tab}
             </span>

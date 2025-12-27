@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { Track } from "../types/types";
+import type { Track } from "../types/types";
 
 const PlayerContext = createContext({} as any);
 

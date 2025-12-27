@@ -1,11 +1,11 @@
 import parse from "html-react-parser";
-import { GetServerSideProps } from "next";
+import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import { RiMusic2Fill } from "react-icons/ri";
 import Layout from "../../components/Layout";
 import TracksTable from "../../components/TracksTable";
 import styles from "../../styles/Description.module.css";
-import { PlaylistType } from "../../types/types";
+import type { PlaylistType } from "../../types/types";
 import { customGet } from "../../utils/customGet";
 import { isAuthenticated } from "../../utils/isAuthenticated";
 
@@ -21,18 +21,18 @@ export default function Playlist({ playlist }: IProps) {
           <>
             {playlist.images.length > 0 ? (
               <img
-                src={playlist.images[0].url}
                 alt={playlist.name}
-                className="object-contain w-60 h-60 "
+                className="h-60 w-60 object-contain"
+                src={playlist.images[0].url}
               />
             ) : (
-              <div className="w-full h-40">
-                <RiMusic2Fill className="w-full h-full bg-paper " />
+              <div className="h-40 w-full">
+                <RiMusic2Fill className="h-full w-full bg-paper" />
               </div>
             )}
             <div className="flex flex-col gap-3">
-              <h5 className="text-xs font-bold uppercase">{playlist.type}</h5>
-              <h2 className="text-5xl font-bold">{playlist.name}</h2>
+              <h5 className="font-bold text-xs uppercase">{playlist.type}</h5>
+              <h2 className="font-bold text-5xl">{playlist.name}</h2>
 
               <p className={styles.description}>
                 {parse(playlist.description)}

@@ -1,4 +1,4 @@
-import { DefaultSession } from "next-auth";
+import type { DefaultSession } from "next-auth";
 
 interface MyUser {
   name?: string | null;

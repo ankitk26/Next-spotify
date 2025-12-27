@@ -21,36 +21,36 @@ export default function MainControllers() {
   } = usePlayer();
 
   return (
-    <div className="flex flex-col items-center justify-center col-span-7 gap-3">
+    <div className="col-span-7 flex flex-col items-center justify-center gap-3">
       {/* <pre>{JSON.stringify({ currentTime, duration }, null, 4)}</pre> */}
       <div className="flex items-center gap-5">
-        <IoShuffle className="text-lg text-gray" />
-        <MdSkipPrevious className="text-xl text-gray" />
+        <IoShuffle className="text-gray text-lg" />
+        <MdSkipPrevious className="text-gray text-xl" />
         <button
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-2xl text-black focus:outline-none"
           onClick={togglePlay}
-          className="flex items-center justify-center w-8 h-8 text-2xl text-black bg-white rounded-full focus:outline-none"
         >
           {/* KMDK */}
           {isPlaying ? <MdPause /> : <MdPlayArrow />}
         </button>
-        <MdSkipNext className="text-xl text-gray" />
-        <IoRepeat className="text-lg text-gray" />
+        <MdSkipNext className="text-gray text-xl" />
+        <IoRepeat className="text-gray text-lg" />
       </div>
 
-      <div className="flex items-center justify-center w-full gap-5">
-        <span className="text-xs text-gray">
+      <div className="flex w-full items-center justify-center gap-5">
+        <span className="text-gray text-xs">
           {currentTime ? fmtMSS(currentTime * 1000) : "0:00"}
         </span>
         <input
-          type="range"
           className={styles.player}
-          value={slider}
           onChange={(e) => {
-            setSlider(parseInt(e.target.value));
-            setDrag(parseInt(e.target.value));
+            setSlider(Number.parseInt(e.target.value));
+            setDrag(Number.parseInt(e.target.value));
           }}
+          type="range"
+          value={slider}
         />
-        <span className="text-xs text-gray">
+        <span className="text-gray text-xs">
           {duration ? fmtMSS(duration * 1000) : "0:00"}
         </span>
       </div>

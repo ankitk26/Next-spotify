@@ -1,9 +1,9 @@
-import { GetServerSideProps } from "next";
-import { getSession, useSession } from "next-auth/react";
+import type { GetServerSideProps } from "next";
 import Image from "next/image";
+import { getSession, useSession } from "next-auth/react";
 import Layout from "../../components/Layout";
 import TracksTable from "../../components/TracksTable";
-import { MySession, PlaylistType } from "../../types/types";
+import type { MySession, PlaylistType } from "../../types/types";
 import { customGet } from "../../utils/customGet";
 import { isAuthenticated } from "../../utils/isAuthenticated";
 
@@ -20,14 +20,14 @@ export default function LikedTracks({ likedTracks }: IProps) {
         <>
           <div className="flex items-end gap-6">
             <Image
-              src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"
               alt="Liked Songs"
               height={208}
+              src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"
               width={208}
             />
             <div className="flex flex-col gap-3">
-              <h5 className="text-sm font-bold uppercase">Playlist</h5>
-              <h2 className="text-5xl font-bold">Liked Songs</h2>
+              <h5 className="font-bold text-sm uppercase">Playlist</h5>
+              <h2 className="font-bold text-5xl">Liked Songs</h2>
 
               <div className="flex items-center gap-5 text-sm">
                 <span className="font-bold">{session?.user.name}</span>
@@ -58,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 
   const likedTracks = await customGet(
-    `https://api.spotify.com/v1/me/tracks?market=from_token&limit=50`,
+    "https://api.spotify.com/v1/me/tracks?market=from_token&limit=50",
     session
   );
 

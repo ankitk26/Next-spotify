@@ -1,9 +1,9 @@
-import { GetServerSideProps } from "next";
+import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import { RiMusic2Fill } from "react-icons/ri";
 import Layout from "../../components/Layout";
 import TracksTable from "../../components/TracksTable";
-import { Album } from "../../types/types";
+import type { Album } from "../../types/types";
 import { customGet } from "../../utils/customGet";
 import { isAuthenticated } from "../../utils/isAuthenticated";
 
@@ -19,20 +19,20 @@ export default function SingleAlbum({ album }: IProps) {
           <>
             {album.images.length > 0 ? (
               <img
-                src={album.images[0].url}
                 alt={album.name}
-                className="object-contain w-52 h-52"
+                className="h-52 w-52 object-contain"
+                src={album.images[0].url}
               />
             ) : (
-              <div className="w-full h-40">
-                <RiMusic2Fill className="w-full h-full bg-paper " />
+              <div className="h-40 w-full">
+                <RiMusic2Fill className="h-full w-full bg-paper" />
               </div>
             )}
             <div className="flex flex-col gap-3">
-              <h5 className="text-xs font-bold uppercase">
+              <h5 className="font-bold text-xs uppercase">
                 {album.album_type}
               </h5>
-              <h2 className="text-5xl font-bold">{album.name}</h2>
+              <h2 className="font-bold text-5xl">{album.name}</h2>
 
               <div className="flex items-center gap-5 text-sm">
                 <span className="font-bold">{album.artists[0].name}</span>
@@ -46,7 +46,7 @@ export default function SingleAlbum({ album }: IProps) {
         )}
       </div>
 
-      <TracksTable tracks={album?.tracks.items} noAlbum />
+      <TracksTable noAlbum tracks={album?.tracks.items} />
     </Layout>
   );
 }

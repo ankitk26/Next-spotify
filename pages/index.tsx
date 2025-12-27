@@ -1,5 +1,4 @@
-import { GetServerSideProps } from "next";
-import { getToken } from "next-auth/jwt";
+import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import AlbumList from "../components/AlbumList";
 import Heading from "../components/Heading";
@@ -12,12 +11,12 @@ import { isAuthenticated } from "../utils/isAuthenticated";
 export default function Home({ newReleases, featuredPlaylists }) {
   return (
     <Layout title="Welcome to Spotify">
-      <h1 className="mb-5 text-3xl font-bold">Good {getGreeting()}</h1>
+      <h1 className="mb-5 font-bold text-3xl">Good {getGreeting()}</h1>
 
-      <Heading text="New releases" className="mt-10" />
+      <Heading className="mt-10" text="New releases" />
       <AlbumList albums={newReleases?.albums.items} />
 
-      <Heading text={featuredPlaylists?.message} className="mt-16" />
+      <Heading className="mt-16" text={featuredPlaylists?.message} />
       <PlaylistList playlists={featuredPlaylists?.playlists.items} />
     </Layout>
   );
