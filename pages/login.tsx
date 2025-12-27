@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 
 export default function Login() {
   const handleLogin = () => {
-    signIn("spotify", { callbackUrl: "http://localhost:3000" });
+    signIn("spotify", { callbackUrl: process.env.NEXTAUTH_URL });
   };
 
   return (

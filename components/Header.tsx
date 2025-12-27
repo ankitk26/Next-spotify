@@ -18,7 +18,7 @@ export default function Header() {
 
   const logout = () => {
     setCurrentTrack(null);
-    signOut({ callbackUrl: "http://localhost:3000/login" });
+    signOut({ callbackUrl: `${process.env.NEXTAUTH_URL}/login` });
   };
 
   if (router.pathname === "/login") {
