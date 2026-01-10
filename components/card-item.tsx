@@ -25,7 +25,7 @@ export default function CardItem({
 
   if (type === "genre") {
     return (
-      <div className="cursor-pointer rounded bg-paper p-4 transition duration-300 hover:bg-[#282828]">
+      <div className="cursor-pointer rounded bg-paper p-4 transition duration-300 hover:bg-card-hover">
         {images.length > 0 ? (
           <img
             alt={altTitle}
@@ -50,7 +50,7 @@ export default function CardItem({
 
   return (
     <Link href={`/${type}/${id}`} passHref>
-      <div className="cursor-pointer rounded bg-paper p-4 transition duration-300 hover:bg-[#282828]">
+      <div className="cursor-pointer rounded bg-paper p-4 transition duration-300 hover:bg-card-hover">
         {images.length > 0 ? (
           <img
             alt={altTitle}

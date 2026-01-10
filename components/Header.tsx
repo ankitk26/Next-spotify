@@ -28,11 +28,11 @@ export default function Header() {
 	}
 
 	return (
-		<header className="sticky top-0 z-50 flex w-full items-center justify-between bg-[#111011] p-4 pl-10">
+		<header className="sticky top-0 z-50 flex w-full items-center justify-between bg-header-bg p-4 pl-10">
 			<div className="flex w-lg items-center gap-10">
 				<div className="flex items-center gap-3">
 					<button
-						className="flex items-center rounded-full bg-[#0B0B0A] p-1 focus:outline-none"
+						className="flex items-center rounded-full bg-button-bg p-1 focus:outline-none"
 						onClick={() => router.back()}
 						type="button"
 					>
@@ -40,7 +40,7 @@ export default function Header() {
 					</button>
 
 					<button
-						className="flex items-center rounded-full bg-[#0B0B0A] p-1 focus:outline-none"
+						className="flex items-center rounded-full bg-button-bg p-1 focus:outline-none"
 						onClick={() => router.forward()}
 						type="button"
 					>
@@ -57,7 +57,7 @@ export default function Header() {
 			<div className="flex items-center gap-6">
 				<div className="flex items-center gap-3 rounded-full bg-black bg-opacity-70 py-2 pr-4 pl-2">
 					{session?.user?.picture === undefined ? (
-						<AiOutlineUser className="rounded-full bg-[#333333] p-1 text-2xl" />
+						<AiOutlineUser className="rounded-full bg-user-icon-bg p-1 text-2xl" />
 					) : (
 						<img
 							alt={session?.user?.name ?? ""}
@@ -72,7 +72,7 @@ export default function Header() {
 
 				<div>
 					<button
-						className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-70 hover:bg-[#181818] focus:outline-none"
+						className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-70 hover:bg-button-hover focus:outline-none"
 						onClick={logout}
 						type="button"
 					>

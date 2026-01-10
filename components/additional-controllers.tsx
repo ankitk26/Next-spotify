@@ -12,7 +12,7 @@ export default function AdditionalControllers() {
       {/* Volume bar */}
       <div className="mt-3 w-20">
         <div className="relative w-full pt-1">
-          <div className="mb-4 flex h-1 overflow-hidden rounded bg-[#535353] text-xs">
+          <div className="mb-4 flex h-1 overflow-hidden rounded bg-volume-bar text-xs">
             <div className="flex w-1/3 flex-col justify-center whitespace-nowrap bg-gray text-center text-white shadow-none" />
           </div>
         </div>

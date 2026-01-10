@@ -44,22 +44,22 @@ function MyApp({ Component, pageProps }: AppProps) {
       <SpotifyProvider>
         {/* LEGACY CODE: PlayerProvider commented out - Spotify has disabled previews */}
         {/* <PlayerProvider> */}
-          {router.pathname === "/login" ? (
-            <Component {...pageProps} />
-          ) : (
-            <>
-              <Sidebar />
-              <div className="ml-64 flex flex-col">
-                <Header />
-                <main className="mt-4 ml-4">
-                  <Component {...pageProps} />
-                </main>
-              </div>
-              {/* LEGACY CODE: Player components commented out - Spotify has disabled previews */}
-              {/* <PlayerTwo /> */}
-              {/* <PreviewPlayer /> */}
-            </>
-          )}
+        {router.pathname === "/login" ? (
+          <Component {...pageProps} />
+        ) : (
+          <>
+            <Sidebar />
+            <div className="ml-64 flex flex-col">
+              <Header />
+              <main className="mt-4 ml-4">
+                <Component {...pageProps} />
+              </main>
+            </div>
+            {/* LEGACY CODE: Player components commented out - Spotify has disabled previews */}
+            {/* <PlayerTwo /> */}
+            {/* <PreviewPlayer /> */}
+          </>
+        )}
         {/* </PlayerProvider> */}
       </SpotifyProvider>
     </SessionProvider>

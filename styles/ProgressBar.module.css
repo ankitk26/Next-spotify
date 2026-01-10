@@ -1,7 +1,7 @@
 .player {
   width: 60%;
   -webkit-appearance: none;
-  background-color: #535353;
+  background-color: var(--color-volume-bar);
   height: 4px;
   border-radius: 3px;
   -webkit-transition: 0.2s;

@@ -81,7 +81,7 @@ export default function TracksTable({
 
                   <div className="w-full">
                     <h2
-                      className="w-10/12 truncate font-medium text-sm cursor-default"
+                      className="w-10/12 cursor-default truncate font-medium text-sm"
                       // LEGACY CODE: onClick={() => playTrack(track)} - Spotify has disabled previews
                     >
                       {track.name}

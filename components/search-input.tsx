@@ -22,7 +22,7 @@ export default function SearchInput() {
       className="flex w-full items-center justify-between gap-3 rounded-full bg-white px-3 py-1.5"
       onSubmit={handleSubmit}
     >
-      <IoSearchOutline className="text-2xl text-[#121212]" />
+      <IoSearchOutline className="text-2xl text-search-icon" />
 
       <input
         className="w-full grow bg-transparent font-semibold text-paper text-sm focus:outline-none"
@@ -39,7 +39,7 @@ export default function SearchInput() {
           onClick={() => setQuery("")}
           type="button"
         >
-          <IoCloseOutline className="text-2xl text-[#121212]" />
+          <IoCloseOutline className="text-2xl text-search-icon" />
         </button>
       )}
     </form>

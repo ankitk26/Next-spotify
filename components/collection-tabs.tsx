@@ -13,7 +13,7 @@ export default function CollectionTabs() {
           <span
             className={`${
               router.pathname === `/collection/${tab}`
-                ? "bg-[#323233]"
+                ? "bg-tab-active"
                 : "bg-transparent"
             } rounded px-6 py-3 font-bold text-sm text-white capitalize`}
           >

@@ -12,7 +12,7 @@ body::-webkit-scrollbar-track,
 
 body::-webkit-scrollbar-thumb,
 #sidebar-playlists::-webkit-scrollbar-thumb {
-  background-color: #888988;
+  background-color: var(--color-scrollbar-thumb);
   outline: 1px solid slategrey;
 }
 
@@ -23,8 +23,7 @@ body::-webkit-scrollbar-thumb,
 }
 
 #nprogress .bar {
-  --primary: #1db964; /*Same color as the primary color in styles/globals.css @theme */
-  background: var(--primary);
+  background: var(--color-primary);
   position: fixed;
   z-index: 1031;
   top: 0;

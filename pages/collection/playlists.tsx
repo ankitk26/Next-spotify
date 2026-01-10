@@ -25,7 +25,7 @@ export default function UserPlaylists({ likedTracks }: IProps) {
           <div
             className="col-span-2 flex cursor-pointer flex-col items-start justify-end gap-8 rounded p-4"
             style={{
-              background: "linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%)",
+              background: `linear-gradient(149.46deg, var(--color-gradient-start), var(--color-gradient-end) 99.16%)`,
             }}
           >
             <div className="inline">
