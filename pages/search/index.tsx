@@ -7,42 +7,42 @@ import Layout from "../../components/Layout";
 import { customGet } from "../../utils/customGet";
 import { isAuthenticated } from "../../utils/isAuthenticated";
 
-export default function Search({ categories }) {
-  return (
-    <Layout title="Spotify - Search">
-      <Heading text="Browse Categories" />
+export default function Search({ categories }: { categories: any }) {
+	return (
+		<Layout title="Spotify - Search">
+			<Heading text="Browse Categories" />
 
-      <CardItemGrid>
-        {categories?.categories.items.map((category) => (
-          <CardItem
-            altTitle={category.name}
-            heading={category.name}
-            id={category.id}
-            images={category.icons}
-            key={category.id}
-            type="genre"
-          />
-        ))}
-      </CardItemGrid>
-    </Layout>
-  );
+			<CardItemGrid>
+				{categories?.categories.items.map((category: any) => (
+					<CardItem
+						altTitle={category.name}
+						heading={category.name}
+						id={category.id}
+						images={category.icons}
+						key={category.id}
+						type="genre"
+					/>
+				))}
+			</CardItemGrid>
+		</Layout>
+	);
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const session = await getSession(ctx);
+	const session = await getSession(ctx);
 
-  if (!(await isAuthenticated(session))) {
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
-  }
+	if (!(await isAuthenticated(session))) {
+		return {
+			redirect: {
+				destination: "/login",
+				permanent: false
+			}
+		};
+	}
 
-  const categories = await customGet(
-    "https://api.spotify.com/v1/browse/categories?limit=50&country=IN",
-    session
-  );
-  return { props: { categories } };
+	const categories = await customGet(
+		"https://api.spotify.com/v1/browse/categories?limit=50&country=IN",
+		session
+	);
+	return { props: { categories } };
 };

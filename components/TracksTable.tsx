@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MdSchedule } from "react-icons/md";
 import { usePlayer } from "../context/PlayerContext";
-import type { Track } from "../types/types";
+import type { Artist, Track } from "../types/types";
 import { fmtMSS } from "../utils/formatDuration";
 
 interface IProps {
@@ -54,80 +54,79 @@ export default function TracksTable({
 			)}
 
 			<div className="col-span-12 w-full">
-				{tracks?.map((track, index) => (
-					<div
-						className={`grid grid-cols-12 ${
-							track.preview_url ? "" : "opacity-50"
-						}`}
-						key={track.id + index + 1}
-					>
-						<div className="col-span-1 my-3 flex items-center text-gray text-sm">
-							{index + 1}
-						</div>
+				{tracks?.map((track: Track, index: number) => {
+					return (
+						<div className="grid grid-cols-12" key={track.id + index + 1}>
+							<div className="col-span-1 my-3 flex items-center text-gray text-sm">
+								{index + 1}
+							</div>
 
-						<div
-							className={`${
-								noAlbum ? "col-span-10" : "col-span-6"
-							} my-3 flex w-full items-center`}
-						>
-							<div className="flex w-full items-center gap-4">
-								{(!noAlbum || noArtist) && (
-									<div className="h-10 w-10 shrink-0">
-										<img
-											alt={track.name}
-											className="h-10 w-10 object-contain"
-											src={track.album.images?.[0].url ?? "/placeholder"}
-										/>
-									</div>
-								)}
-
-								<div className="w-full">
-									<h2
-										className={`w-10/12 truncate font-medium text-sm ${
-											track.preview_url
-												? "cursor-pointer hover:underline"
-												: "cursor-default"
-										}`}
-										onClick={() => playTrack(track)}
-									>
-										{track.name}
-									</h2>
-
-									{!noArtist && (
-										<div className="flex w-10/12 flex-wrap items-center gap-1 text-gray text-sm">
-											<span className="truncate">
-												{track.artists.map((artist, index) => (
-													<Link
-														href={`/artist/${artist.id}`}
-														key={artist.id + track.id}
-													>
-														<span className="hover:text-white hover:underline">
-															{index !== 0 ? `, ${artist.name}` : artist.name}
-														</span>
-													</Link>
-												))}
-											</span>
+							<div
+								className={`${
+									noAlbum ? "col-span-10" : "col-span-6"
+								} my-3 flex w-full items-center`}
+							>
+								<div className="flex w-full items-center gap-4">
+									{(!noAlbum || noArtist) && (
+										<div className="h-10 w-10 shrink-0">
+											<img
+												alt={track.name}
+												className="h-10 w-10 object-contain"
+												src={track.album.images?.[0]?.url ?? "/placeholder"}
+											/>
 										</div>
 									)}
+
+									<div className="w-full">
+										<h2
+											className={`w-10/12 truncate font-medium text-sm ${
+												track.preview_url
+													? "cursor-pointer hover:underline"
+													: "cursor-default"
+											}`}
+											onClick={() => playTrack(track)}
+										>
+											{track.name}
+										</h2>
+
+										{!noArtist && (
+											<div className="flex w-10/12 flex-wrap items-center gap-1 text-gray text-sm">
+												<span className="truncate">
+													{track.artists.map(
+														(artist: Artist, index: number) => (
+															<Link
+																className="hover:text-white hover:underline"
+																href={`/artist/${artist.id}`}
+																key={artist.id + track.id}
+															>
+																{index !== 0 ? `, ${artist.name}` : artist.name}
+															</Link>
+														)
+													)}
+												</span>
+											</div>
+										)}
+									</div>
 								</div>
 							</div>
-						</div>
 
-						{!noAlbum && (
-							<div className="col-span-4 my-3 flex w-10/12 items-center text-gray text-sm">
-								<Link href={`/album/${track.album.id}`}>
-									<a className="truncate hover:text-white hover:underline">
+							{!noAlbum && (
+								<div className="col-span-4 my-3 flex w-10/12 items-center text-gray text-sm">
+									<Link
+										href={`/album/${track.album.id}`}
+										className="truncate hover:text-white hover:underline"
+									>
 										{track.album.name}
-									</a>
-								</Link>
-							</div>
-						)}
+									</Link>
+								</div>
+							)}
 
-						<div className="col-span-1 my-3 flex items-center text-gray text-sm">
-							{fmtMSS(track.duration_ms)}
+							<div className="col-span-1 my-3 flex items-center text-gray text-sm">
+								{fmtMSS(track.duration_ms)}
+							</div>
 						</div>
-					</div>
-				))}
+					);
+				})}
 			</div>
 		</div>
 	);
