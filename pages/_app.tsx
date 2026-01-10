@@ -4,9 +4,11 @@ import { SessionProvider } from "next-auth/react";
 import nProgress from "nprogress";
 import { useEffect } from "react";
 import Header from "../components/header";
-import PreviewPlayer from "../components/preview-player";
+// LEGACY CODE: PreviewPlayer commented out - Spotify has disabled previews
+// import PreviewPlayer from "../components/preview-player";
 import Sidebar from "../components/sidebar";
-import PlayerProvider from "../context/player-context";
+// LEGACY CODE: PlayerProvider commented out - Spotify has disabled previews
+// import PlayerProvider from "../context/player-context";
 import { SpotifyProvider } from "../context/spotify-context";
 import "../styles/globals.css";
 import "../styles/nonTailwind.css";
@@ -40,7 +42,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SessionProvider session={pageProps.session}>
       <SpotifyProvider>
-        <PlayerProvider>
+        {/* LEGACY CODE: PlayerProvider commented out - Spotify has disabled previews */}
+        {/* <PlayerProvider> */}
           {router.pathname === "/login" ? (
             <Component {...pageProps} />
           ) : (
@@ -52,11 +55,12 @@ function MyApp({ Component, pageProps }: AppProps) {
                   <Component {...pageProps} />
                 </main>
               </div>
+              {/* LEGACY CODE: Player components commented out - Spotify has disabled previews */}
               {/* <PlayerTwo /> */}
-              <PreviewPlayer />
+              {/* <PreviewPlayer /> */}
             </>
           )}
-        </PlayerProvider>
+        {/* </PlayerProvider> */}
       </SpotifyProvider>
     </SessionProvider>
   );

@@ -2,7 +2,8 @@ import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdLogout, MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-import { useSpotify } from "../context/spotify-context";
+// LEGACY CODE: useSpotify setCurrentTrack commented out - Spotify has disabled previews
+// import { useSpotify } from "../context/spotify-context";
 import type { MySession } from "../types/types";
 import CollectionTabs from "./collection-tabs";
 import SearchInput from "./search-input";
@@ -14,11 +15,12 @@ interface UseSession {
 export default function Header() {
 	const router = useRouter();
 	const { data: session }: UseSession = useSession();
-	const { setCurrentTrack } = useSpotify();
+	// LEGACY CODE: setCurrentTrack commented out - Spotify has disabled previews
+	// const { setCurrentTrack } = useSpotify();
 
 	const logout = () => {
-		setCurrentTrack(null);
-		signOut({ callbackUrl: `/login` });
+		// LEGACY CODE: setCurrentTrack(null); - Spotify has disabled previews
+		signOut({ callbackUrl: "/login" });
 	};
 
 	if (router.pathname === "/login") {

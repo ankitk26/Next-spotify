@@ -2,12 +2,12 @@ import type { MySession } from "../types/types";
 
 export const customGet = async (url: string, session: MySession | null) => {
   if (!session) {
-    return null
+    return null;
   }
   if (!session.user?.accessToken) {
-    return null
+    return null;
   }
-  
+
   const res = await fetch(url, {
     headers: {
       Authorization: `Bearer ${session.user.accessToken}`,

@@ -1,133 +1,131 @@
 import Link from "next/link";
 import { MdSchedule } from "react-icons/md";
-import { usePlayer } from "../context/player-context";
+// LEGACY CODE: usePlayer commented out - Spotify has disabled previews
+// import { usePlayer } from "../context/player-context";
 import type { Artist, Track } from "../types/types";
 import { fmtMSS } from "../utils/format-duration";
 
 interface IProps {
-	tracks: Track[];
-	noAlbum?: boolean;
-	noArtist?: boolean;
+  tracks: Track[];
+  noAlbum?: boolean;
+  noArtist?: boolean;
 }
 
 export default function TracksTable({
-	tracks,
-	noAlbum = false,
-	noArtist = false
+  tracks,
+  noAlbum = false,
+  noArtist = false,
 }: IProps) {
-	const { setCurrentTrack } = usePlayer();
+  // LEGACY CODE: Spotify has disabled previews, so track playback is commented out
+  // const { setCurrentTrack } = usePlayer();
 
-	const playTrack = (track: Track) => {
-		if (track.preview_url) {
-			setCurrentTrack(track);
-		}
-	};
+  // const playTrack = (track: Track) => {
+  //   if (track.preview_url) {
+  //     setCurrentTrack(track);
+  //   }
+  // };
 
-	return (
-		<div className="mt-8 grid grid-cols-12 gap-2 p-1">
-			{!noArtist && (
-				<>
-					<div className="col-span-1 text-left font-semibold text-white uppercase tracking-wider">
-						#
-					</div>
+  return (
+    <div className="mt-8 grid grid-cols-12 gap-2 p-1">
+      {!noArtist && (
+        <>
+          <div className="col-span-1 text-left font-semibold text-white uppercase tracking-wider">
+            #
+          </div>
 
-					<div
-						className={`${
-							noAlbum ? "col-span-10" : "col-span-6"
-						} text-left font-medium text-gray text-sm uppercase tracking-wider`}
-					>
-						Title
-					</div>
+          <div
+            className={`${
+              noAlbum ? "col-span-10" : "col-span-6"
+            } text-left font-medium text-gray text-sm uppercase tracking-wider`}
+          >
+            Title
+          </div>
 
-					{!noAlbum && (
-						<div className="col-span-4 text-left font-medium text-gray text-sm uppercase tracking-wider">
-							Album
-						</div>
-					)}
+          {!noAlbum && (
+            <div className="col-span-4 text-left font-medium text-gray text-sm uppercase tracking-wider">
+              Album
+            </div>
+          )}
 
-					<div className="col-span-1 text-left font-medium text-gray text-sm uppercase tracking-wider">
-						<MdSchedule className="text-xl" />
-					</div>
+          <div className="col-span-1 text-left font-medium text-gray text-sm uppercase tracking-wider">
+            <MdSchedule className="text-xl" />
+          </div>
 
-					<div className="col-span-12 my-3 border-gray border-b" />
-				</>
-			)}
+          <div className="col-span-12 my-3 border-gray border-b" />
+        </>
+      )}
 
-			<div className="col-span-12 w-full">
-				{tracks?.map((track: Track, index: number) => {
-					return (
-						<div className="grid grid-cols-12" key={track.id + index + 1}>
-							<div className="col-span-1 my-3 flex items-center text-gray text-sm">
-								{index + 1}
-							</div>
+      <div className="col-span-12 w-full">
+        {tracks?.map((track: Track, index: number) => {
+          return (
+            <div className="grid grid-cols-12" key={track.id + index + 1}>
+              <div className="col-span-1 my-3 flex items-center text-gray text-sm">
+                {index + 1}
+              </div>
 
-							<div
-								className={`${
-									noAlbum ? "col-span-10" : "col-span-6"
-								} my-3 flex w-full items-center`}
-							>
-								<div className="flex w-full items-center gap-4">
-									{(!noAlbum || noArtist) && (
-										<div className="h-10 w-10 shrink-0">
-											<img
-												alt={track.name}
-												className="h-10 w-10 object-contain"
-												src={track.album.images?.[0]?.url ?? "/placeholder"}
-											/>
-										</div>
-									)}
+              <div
+                className={`${
+                  noAlbum ? "col-span-10" : "col-span-6"
+                } my-3 flex w-full items-center`}
+              >
+                <div className="flex w-full items-center gap-4">
+                  {(!noAlbum || noArtist) && (
+                    <div className="h-10 w-10 shrink-0">
+                      <img
+                        alt={track.name}
+                        className="h-10 w-10 object-contain"
+                        src={track.album.images?.[0]?.url ?? "/placeholder"}
+                      />
+                    </div>
+                  )}
 
-									<div className="w-full">
-										<h2
-											className={`w-10/12 truncate font-medium text-sm ${
-												track.preview_url
-													? "cursor-pointer hover:underline"
-													: "cursor-default"
-											}`}
-											onClick={() => playTrack(track)}
-										>
-											{track.name}
-										</h2>
+                  <div className="w-full">
+                    <h2
+                      className="w-10/12 truncate font-medium text-sm cursor-default"
+                      // LEGACY CODE: onClick={() => playTrack(track)} - Spotify has disabled previews
+                    >
+                      {track.name}
+                    </h2>
 
-										{!noArtist && (
-											<div className="flex w-10/12 flex-wrap items-center gap-1 text-gray text-sm">
-												<span className="truncate">
-													{track.artists.map(
-														(artist: Artist, index: number) => (
-															<Link
-																className="hover:text-white hover:underline"
-																href={`/artist/${artist.id}`}
-																key={artist.id + track.id}
-															>
-																{index !== 0 ? `, ${artist.name}` : artist.name}
-															</Link>
-														)
-													)}
-												</span>
-											</div>
-										)}
-									</div>
-								</div>
-							</div>
+                    {!noArtist && (
+                      <div className="flex w-10/12 flex-wrap items-center gap-1 text-gray text-sm">
+                        <span className="truncate">
+                          {track.artists.map(
+                            (artist: Artist, index: number) => (
+                              <Link
+                                className="hover:text-white hover:underline"
+                                href={`/artist/${artist.id}`}
+                                key={artist.id + track.id}
+                              >
+                                {index !== 0 ? `, ${artist.name}` : artist.name}
+                              </Link>
+                            )
+                          )}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
 
-							{!noAlbum && (
-								<div className="col-span-4 my-3 flex w-10/12 items-center text-gray text-sm">
-									<Link
-										href={`/album/${track.album.id}`}
-										className="truncate hover:text-white hover:underline"
-									>
-										{track.album.name}
-									</Link>
-								</div>
-							)}
+              {!noAlbum && (
+                <div className="col-span-4 my-3 flex w-10/12 items-center text-gray text-sm">
+                  <Link
+                    className="truncate hover:text-white hover:underline"
+                    href={`/album/${track.album.id}`}
+                  >
+                    {track.album.name}
+                  </Link>
+                </div>
+              )}
 
-							<div className="col-span-1 my-3 flex items-center text-gray text-sm">
-								{fmtMSS(track.duration_ms)}
-							</div>
-						</div>
-					);
-				})}
-			</div>
-		</div>
-	);
+              <div className="col-span-1 my-3 flex items-center text-gray text-sm">
+                {fmtMSS(track.duration_ms)}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
