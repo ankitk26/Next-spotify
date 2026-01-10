@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { MdSchedule } from "react-icons/md";
-import { usePlayer } from "../context/PlayerContext";
+import { usePlayer } from "../context/player-context";
 import type { Artist, Track } from "../types/types";
-import { fmtMSS } from "../utils/formatDuration";
+import { fmtMSS } from "../utils/format-duration";
 
 interface IProps {
 	tracks: Track[];

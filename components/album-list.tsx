@@ -1,6 +1,6 @@
-import CardItem from "../components/CardItem";
+import CardItem from "./card-item";
 import type { Album } from "../types/types";
-import CardItemGrid from "./CardItemGrid";
+import CardItemGrid from "./card-item-grid";
 
 interface IProps {
   albums: Album[];

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSpotify } from "../context/SpotifyContext";
-import AdditionalControllers from "./AdditionalControllers";
-import PlayerTrackInfo from "./PlayerTrackInfo";
+import { useSpotify } from "../context/spotify-context";
+import AdditionalControllers from "./additional-controllers";
+import PlayerTrackInfo from "./player-track-info";
 
 export default function PlayerTwo() {
   const { currentTrack } = useSpotify();

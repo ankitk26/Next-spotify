@@ -1,11 +1,11 @@
 import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import { RiMusic2Fill } from "react-icons/ri";
-import Layout from "../../components/Layout";
-import TracksTable from "../../components/TracksTable";
+import Layout from "../../components/layout";
+import TracksTable from "../../components/tracks-table";
 import type { Album } from "../../types/types";
-import { customGet } from "../../utils/customGet";
-import { isAuthenticated } from "../../utils/isAuthenticated";
+import { customGet } from "../../utils/custom-get";
+import { isAuthenticated } from "../../utils/is-authenticated";
 
 interface IProps {
   album: Album;

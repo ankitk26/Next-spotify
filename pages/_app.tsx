@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import { SessionProvider } from "next-auth/react";
 import nProgress from "nprogress";
 import { useEffect } from "react";
-import Header from "../components/Header";
-import PreviewPlayer from "../components/PreviewPlayer";
-import Sidebar from "../components/Sidebar";
-import PlayerProvider from "../context/PlayerContext";
-import { SpotifyProvider } from "../context/SpotifyContext";
+import Header from "../components/header";
+import PreviewPlayer from "../components/preview-player";
+import Sidebar from "../components/sidebar";
+import PlayerProvider from "../context/player-context";
+import { SpotifyProvider } from "../context/spotify-context";
 import "../styles/globals.css";
 import "../styles/nonTailwind.css";
 

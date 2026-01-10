@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { IoMdList } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
 import { RiHome5Fill, RiHome5Line } from "react-icons/ri";
-import { useSpotify } from "../context/SpotifyContext";
+import { useSpotify } from "../context/spotify-context";
 
 const activeLink = "bg-[#282828] text-white";
 const inactiveLink = "bg-transparent text-gray";

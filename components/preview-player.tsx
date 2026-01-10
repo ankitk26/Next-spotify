@@ -1,7 +1,7 @@
-import { usePlayer } from "../context/PlayerContext";
-import AdditionalControllers from "./AdditionalControllers";
-import MainControllers from "./MainControllers";
-import PlayerTrackInfo from "./PlayerTrackInfo";
+import { usePlayer } from "../context/player-context";
+import AdditionalControllers from "./additional-controllers";
+import MainControllers from "./main-controllers";
+import PlayerTrackInfo from "./player-track-info";
 
 export default function PreviewPlayer() {
   const { currentTrack } = usePlayer();

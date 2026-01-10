@@ -1,11 +1,11 @@
 import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
-import CardItem from "../../components/CardItem";
-import CardItemGrid from "../../components/CardItemGrid";
-import Heading from "../../components/Heading";
-import Layout from "../../components/Layout";
-import { customGet } from "../../utils/customGet";
-import { isAuthenticated } from "../../utils/isAuthenticated";
+import CardItem from "../../components/card-item";
+import CardItemGrid from "../../components/card-item-grid";
+import Heading from "../../components/heading";
+import Layout from "../../components/layout";
+import { customGet } from "../../utils/custom-get";
+import { isAuthenticated } from "../../utils/is-authenticated";
 
 export default function Search({ categories }: { categories: any }) {
 	return (

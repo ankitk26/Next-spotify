@@ -5,9 +5,9 @@ import {
   MdSkipNext,
   MdSkipPrevious,
 } from "react-icons/md";
-import { usePlayer } from "../context/PlayerContext";
+import { usePlayer } from "../context/player-context";
 import styles from "../styles/ProgressBar.module.css";
-import { fmtMSS } from "../utils/formatDuration";
+import { fmtMSS } from "../utils/format-duration";
 
 export default function MainControllers() {
   const {

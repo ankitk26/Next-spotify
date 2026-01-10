@@ -2,10 +2,10 @@ import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdLogout, MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-import { useSpotify } from "../context/SpotifyContext";
+import { useSpotify } from "../context/spotify-context";
 import type { MySession } from "../types/types";
-import CollectionTabs from "./CollectionTabs";
-import SearchInput from "./SearchInput";
+import CollectionTabs from "./collection-tabs";
+import SearchInput from "./search-input";
 
 interface UseSession {
 	data: MySession | null;

@@ -1,16 +1,16 @@
 import type { GetServerSideProps } from "next";
 import Link from "next/link";
 import { getSession } from "next-auth/react";
-import AlbumList from "../../../components/AlbumList";
-import ArtistList from "../../../components/ArtistList";
-import Heading from "../../../components/Heading";
-import Layout from "../../../components/Layout";
-import PlaylistList from "../../../components/PlaylistList";
-import { useSpotify } from "../../../context/SpotifyContext";
+import AlbumList from "../../../components/album-list";
+import ArtistList from "../../../components/artist-list";
+import Heading from "../../../components/heading";
+import Layout from "../../../components/layout";
+import PlaylistList from "../../../components/playlist-list";
+import { useSpotify } from "../../../context/spotify-context";
 import type { SearchResults, Track } from "../../../types/types";
-import { customGet } from "../../../utils/customGet";
-import { fmtMSS } from "../../../utils/formatDuration";
-import { isAuthenticated } from "../../../utils/isAuthenticated";
+import { customGet } from "../../../utils/custom-get";
+import { fmtMSS } from "../../../utils/format-duration";
+import { isAuthenticated } from "../../../utils/is-authenticated";
 
 interface IProps {
 	query: string;

@@ -1,11 +1,11 @@
 import type { GetServerSideProps } from "next";
 import Image from "next/image";
 import { getSession, useSession } from "next-auth/react";
-import Layout from "../../components/Layout";
-import TracksTable from "../../components/TracksTable";
+import Layout from "../../components/layout";
+import TracksTable from "../../components/tracks-table";
 import type { MySession, PlaylistType } from "../../types/types";
-import { customGet } from "../../utils/customGet";
-import { isAuthenticated } from "../../utils/isAuthenticated";
+import { customGet } from "../../utils/custom-get";
+import { isAuthenticated } from "../../utils/is-authenticated";
 
 interface IProps {
   likedTracks: PlaylistType;
