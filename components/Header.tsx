@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 import { AiOutlineUser } from "react-icons/ai";
@@ -59,10 +60,12 @@ export default function Header() {
 					{session?.user?.picture === undefined ? (
 						<AiOutlineUser className="rounded-full bg-user-icon-bg p-1 text-2xl" />
 					) : (
-						<img
+						<Image
 							alt={session?.user?.name ?? ""}
 							className="h-8 w-8 rounded-full object-contain"
+							height={32}
 							src={session?.user?.picture ?? "/placeholder"}
+							width={32}
 						/>
 					)}
 					<span className="font-bold text-sm tracking-wide">

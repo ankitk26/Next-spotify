@@ -1,30 +1,22 @@
-module.exports = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "scdn.co",
+        hostname: "*.scdn.co",
         port: "",
-        search: "",
+        pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "t.scdn.co",
+        hostname: "*.spotifycdn.com",
         port: "",
-        search: "",
-      },
-      {
-        protocol: "https",
-        hostname: "i.scdn.co",
-        port: "",
-        search: "",
-      },
-      {
-        protocol: "https",
-        hostname: "mosaic.scdn.co",
-        port: "",
-        search: "",
+        pathname: "/**",
       },
     ],
   },
 };
+
+export default nextConfig;
