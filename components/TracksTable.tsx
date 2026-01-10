@@ -72,7 +72,7 @@ export default function TracksTable({
             >
               <div className="flex w-full items-center gap-4">
                 {(!noAlbum || noArtist) && (
-                  <div className="h-10 w-10 flex-shrink-0">
+                  <div className="h-10 w-10 shrink-0">
                     <img
                       alt={track.name}
                       className="h-10 w-10 object-contain"

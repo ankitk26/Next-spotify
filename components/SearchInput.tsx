@@ -25,7 +25,7 @@ export default function SearchInput() {
       <IoSearchOutline className="text-2xl text-[#121212]" />
 
       <input
-        className="w-full flex-grow bg-transparent font-semibold text-paper text-sm focus:outline-none"
+        className="w-full grow bg-transparent font-semibold text-paper text-sm focus:outline-none"
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Artists and songs"
         spellCheck={false}

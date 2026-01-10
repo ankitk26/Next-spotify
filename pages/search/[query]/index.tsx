@@ -46,7 +46,7 @@ export default function Search({ query, searchResults }: IProps) {
               >
                 <div className="col-span-11 my-3 flex w-full items-center">
                   <div className="flex w-full items-center gap-4">
-                    <div className="h-10 w-10 flex-shrink-0">
+                    <div className="h-10 w-10 shrink-0">
                       <img
                         alt={track.name}
                         className="h-10 w-10 object-contain"

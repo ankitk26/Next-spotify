@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 flex w-full items-center justify-between bg-[#111011] p-4 pl-10">
-      <div className="flex w-[32rem] items-center gap-10">
+      <div className="flex w-lg items-center gap-10">
         <div className="flex items-center gap-3">
           <button
             className="flex items-center rounded-full bg-[#0B0B0A] p-1 focus:outline-none"
