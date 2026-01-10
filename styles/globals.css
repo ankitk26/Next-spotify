@@ -1,8 +1,20 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
+
+@theme {
+  --color-background: #131312;
+  --color-paper: #171717;
+  --color-white: #FEFFFE;
+  --color-purple: #531640;
+  --color-player: #181818;
+  --color-primary: #1DB954;
+  --color-gray: #B2B2B3;
+}
 
 @layer base {
   body {
     @apply text-white bg-background;
+  }
+  button {
+    @apply cursor-pointer;
   }
 }

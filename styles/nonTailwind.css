@@ -23,7 +23,7 @@ body::-webkit-scrollbar-thumb,
 }
 
 #nprogress .bar {
-  --primary: #1db964; /*Same color as the primary color in tailwind.config.js */
+  --primary: #1db964; /*Same color as the primary color in styles/globals.css @theme */
   background: var(--primary);
   position: fixed;
   z-index: 1031;
