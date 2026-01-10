@@ -34,11 +34,16 @@ export default function Header() {
 					<button
 						className="flex items-center rounded-full bg-[#0B0B0A] p-1 focus:outline-none"
 						onClick={() => router.back()}
+						type="button"
 					>
 						<MdNavigateBefore className="text-2xl text-gray" />
 					</button>
 
-					<button className="flex items-center rounded-full bg-[#0B0B0A] p-1 focus:outline-none">
+					<button
+						className="flex items-center rounded-full bg-[#0B0B0A] p-1 focus:outline-none"
+						onClick={() => router.forward()}
+						type="button"
+					>
 						<MdNavigateNext className="text-2xl text-gray" />
 					</button>
 				</div>
@@ -69,6 +74,7 @@ export default function Header() {
 					<button
 						className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-70 hover:bg-[#181818] focus:outline-none"
 						onClick={logout}
+						type="button"
 					>
 						<MdLogout />
 					</button>
