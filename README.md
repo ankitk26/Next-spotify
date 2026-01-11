@@ -1,4 +1,3 @@
-
 # Next Spotify
 
 <img src="https://cdn-images-1.medium.com/max/1000/0*mr1yE7_hsk_3mquJ" alt="sample intro image" width="700" />
@@ -7,7 +6,8 @@ Next Spotify is a Spotify clone built using Next.js and TailwindCSS. Users can l
 
 Working demo for the project - [Link](https://next-spotify-smoky.vercel.app)
 
-## *Update*  
+## _Update_
+
 Next-Spotify v2 is out in this [repository](https://github.com/ankitk26/Next-Spotify-v2). Check this out if you are interested in Next.js's app dir, server components, client components, and improved UI.
 
 <b>Note </b>: Currently users cannot log in to the demo link. The application would work in the local system.
@@ -24,7 +24,6 @@ Next-Spotify v2 is out in this [repository](https://github.com/ankitk26/Next-Spo
 - [Screenshots](#screenshots)
 - [Resources](#resources)
 
-
 <section id="technologies" />
 
 ## Technologies and Libraries used
@@ -33,7 +32,6 @@ Next-Spotify v2 is out in this [repository](https://github.com/ankitk26/Next-Spo
 - Typescript
 - [TailwindCSS](https://tailwindcss.com/)
 - [NextAuth.js](https://next-auth.js.org/) for Spotify OAuth authentication
-
 
 <section id="features"/>
 
@@ -58,7 +56,8 @@ Next-Spotify v2 is out in this [repository](https://github.com/ankitk26/Next-Spo
 - [ ] Improve track player
 - [ ] Shuffle play or play all tracks in album or playlist
 
-*Any other features can be suggested under the issues section of the repo*
+_Any other features can be suggested under the issues section of the repo_
+
 <section id="run_locally"/>
 
 ## Run Locally
@@ -83,7 +82,6 @@ Install dependencies
   yarn
 ```
 
-
 Start the server
 
 ```bash
@@ -91,7 +89,6 @@ Start the server
   # or
   yarn dev
 ```
-
 
 <section id="env"/>
 
@@ -119,16 +116,16 @@ To run this project, you will need to add the following environment variables to
   When the project is deployed, add another redirect URL as follows:
 
   `https://xyz.domain/api/auth/callback/spotify`
+
 - **Step 5**: In the **Users and Access** page, add the email addresses for the accounts you want to test the application for. Your own account is enabled by default so no there's no need to add your own account's email.
 
 #### NEXTAUTH_SECRET
 
 To create a secret key, open your terminal, run the command below and copy the value generated to the .env file.
 
-~~~bash
+```bash
 openssl rand -base64 32
-~~~
-
+```
 
 <section id="data_flow"/>
 
