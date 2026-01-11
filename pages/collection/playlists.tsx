@@ -45,16 +45,15 @@ export default function UserPlaylists({ likedTracks }: IProps) {
 				</Link>
 
 				{playlists?.map((playlist) => (
-					<div className="col-span-2" key={playlist.id}>
-						<CardItem
-							altTitle={playlist.name}
-							heading={playlist.name}
-							id={playlist.id}
-							images={playlist.images}
-							subheading={playlist.description}
-							type="playlist"
-						/>
-					</div>
+					<CardItem
+						altTitle={playlist.name}
+						heading={playlist.name}
+						id={playlist.id}
+						images={playlist.images}
+						key={playlist.id}
+						subheading={playlist.description}
+						type="playlist"
+					/>
 				))}
 			</CardItemGrid>
 		</Layout>
