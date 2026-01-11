@@ -108,23 +108,23 @@
 // export const usePlayer = () => useContext(PlayerContext);
 
 // Temporary stub to prevent import errors
-import { createContext } from "react";
+// import { createContext } from "react";
 
-const PlayerContext = createContext({} as any);
+// const PlayerContext = createContext({} as any);
 
-export default function PlayerProvider({ children }) {
-  return <>{children}</>;
-}
+// export default function PlayerProvider({ children }) {
+//   return <>{children}</>;
+// }
 
-export const usePlayer = () => ({
-  setCurrentTrack: () => {},
-  currentTrack: null,
-  isPlaying: false,
-  togglePlay: () => {},
-  duration: 0,
-  currentTime: 0,
-  slider: 0,
-  setSlider: () => {},
-  drag: 0,
-  setDrag: () => {},
-});
+// export const usePlayer = () => ({
+//   setCurrentTrack: () => {},
+//   currentTrack: null,
+//   isPlaying: false,
+//   togglePlay: () => {},
+//   duration: 0,
+//   currentTime: 0,
+//   slider: 0,
+//   setSlider: () => {},
+//   drag: 0,
+//   setDrag: () => {},
+// });

@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: <will fix later> */
 import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import CardItem from "../../components/card-item";

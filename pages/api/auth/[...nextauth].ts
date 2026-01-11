@@ -16,7 +16,7 @@ export default NextAuth({
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async jwt({ token, account }) {
+    jwt({ token, account }) {
       if (account) {
         token.id = account.id;
         token.expires_at = account.expires_at;
@@ -24,7 +24,7 @@ export default NextAuth({
       }
       return token;
     },
-    async session({ session, token }) {
+    session({ session, token }) {
       session.user = token;
       return session;
     },

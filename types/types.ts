@@ -13,7 +13,7 @@ export interface MySession extends Omit<DefaultSession, "user"> {
   expires: string;
 }
 
-interface Image {
+export interface ImageType {
   height: number | null;
   url: string | null;
   width: number | null;
@@ -23,7 +23,7 @@ export interface Album {
   id: string;
   name: string;
   artists: [Artist];
-  images?: [Image];
+  images?: [ImageType];
   album_type?: string;
   release_date?: string;
   tracks?: {
@@ -35,7 +35,7 @@ export interface Album {
 export interface Artist {
   id: string;
   name: string;
-  images?: [Image];
+  images?: [ImageType];
   followers?: {
     total: number;
   };
@@ -57,7 +57,7 @@ export interface PlaylistType {
   followers?: {
     total?: number;
   };
-  images?: [Image];
+  images?: [ImageType];
   name: string;
   owner?: {
     id: string;
