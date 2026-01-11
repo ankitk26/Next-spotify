@@ -1,35 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #131312;
-  --color-paper: #171717;
-  --color-white: #fefffe;
-  --color-purple: #531640;
-  --color-player: #181818;
-  --color-primary: #1db954;
-  --color-gray: #b2b2b3;
+	--color-background: #131312;
+	--color-paper: #171717;
+	--color-white: #fefffe;
+	--color-purple: #531640;
+	--color-player: #181818;
+	--color-primary: #1db954;
+	--color-gray: #b2b2b3;
 
-  /* Additional colors from hardcoded values */
-  --color-card-hover: #282828;
-  --color-search-icon: #121212;
-  --color-volume-bar: #535353;
-  --color-tab-active: #323233;
-  --color-header-bg: #111011;
-  --color-button-bg: #0b0b0a;
-  --color-user-icon-bg: #333333;
-  --color-button-hover: #181818;
-  --color-scrollbar-thumb: #888988;
+	/* Additional colors from hardcoded values */
+	--color-card-hover: #282828;
+	--color-search-icon: #121212;
+	--color-volume-bar: #535353;
+	--color-tab-active: #323233;
+	--color-header-bg: #111011;
+	--color-button-bg: #0b0b0a;
+	--color-user-icon-bg: #333333;
+	--color-button-hover: #181818;
+	--color-scrollbar-thumb: #888988;
 
-  /* Gradient colors for liked songs card */
-  --color-gradient-start: #450af5;
-  --color-gradient-end: #8e8ee5;
+	/* Gradient colors for liked songs card */
+	--color-gradient-start: #450af5;
+	--color-gradient-end: #8e8ee5;
 }
 
 @layer base {
-  body {
-    @apply text-white bg-background;
-  }
-  button {
-    @apply cursor-pointer;
-  }
+	body {
+		@apply text-white bg-background;
+	}
+	button {
+		@apply cursor-pointer;
+	}
 }

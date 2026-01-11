@@ -25,5 +25,5 @@
 // }
 
 export default function PreviewPlayer() {
-  return null;
+	return null;
 }

@@ -31,5 +31,5 @@
 // }
 
 export default function PlayerTrackInfo() {
-  return null;
+	return null;
 }

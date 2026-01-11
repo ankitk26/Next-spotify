@@ -7,5 +7,9 @@
     "ultracite/biome/core",
     "ultracite/biome/react",
     "ultracite/biome/next"
-  ]
+  ],
+  "formatter": {
+    "indentStyle": "tab",
+    "indentWidth": 2
+  }
 }

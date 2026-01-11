@@ -53,5 +53,5 @@
 // }
 
 export default function PlayerTwo() {
-  return null;
+	return null;
 }
