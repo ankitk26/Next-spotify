@@ -3,12 +3,16 @@ import { getSession } from "next-auth/react";
 import AlbumList from "@/components/album-list";
 import Heading from "@/components/heading";
 import Layout from "@/components/layout";
+import type { Album } from "@/types/types";
 import { customGet } from "@/utils/custom-get";
 import { getGreeting } from "@/utils/get-greeting";
 import { isAuthenticated } from "@/utils/is-authenticated";
 
-// biome-ignore lint/suspicious/noExplicitAny: <will fix later>
-export default function Home({ newReleases }: { newReleases: any }) {
+export default function Home({
+	newReleases,
+}: {
+	newReleases: { albums: { items: Album[] } };
+}) {
 	return (
 		<Layout title="Welcome to Spotify">
 			<h1 className="mb-5 font-bold text-3xl">Good {getGreeting()}</h1>
@@ -36,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 		};
 	}
 
-	const newReleases = await customGet(
+	const newReleases: { albums: { items: Album[] } } = await customGet(
 		"https://api.spotify.com/v1/browse/new-releases?country=IN&limit=24",
 		session
 	);

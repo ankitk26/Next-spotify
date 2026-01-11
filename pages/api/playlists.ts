@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
+import type { Playlist } from "@/types/types";
 import { customGet } from "@/utils/custom-get";
 
 export default async function handler(
@@ -8,7 +9,7 @@ export default async function handler(
 ) {
 	const session = await getSession({ req });
 
-	const playlists = await customGet(
+	const playlists: { items: Playlist[] } = await customGet(
 		"https://api.spotify.com/v1/me/playlists",
 		session
 	);

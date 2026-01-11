@@ -6,15 +6,15 @@ import { RiMusic2Fill } from "react-icons/ri";
 import Layout from "@/components/layout";
 import TracksTable from "@/components/tracks-table";
 import styles from "@/styles/Description.module.css";
-import type { PlaylistType } from "@/types/types";
+import type { Playlist } from "@/types/types";
 import { customGet } from "@/utils/custom-get";
 import { isAuthenticated } from "@/utils/is-authenticated";
 
 interface IProps {
-	playlist: PlaylistType;
+	playlist: Playlist;
 }
 
-export default function Playlist({ playlist }: IProps) {
+export default function PlaylistPage({ playlist }: IProps) {
 	return (
 		<Layout title={`Spotify - ${playlist?.name}`}>
 			<div className="flex items-end gap-6">
@@ -49,14 +49,6 @@ export default function Playlist({ playlist }: IProps) {
 								<span className="font-bold">
 									@{playlist.owner?.display_name}
 								</span>
-								{playlist.followers?.total !== undefined &&
-									playlist.followers?.total !== null &&
-									playlist.followers.total > 0 && (
-										<span className="text-gray">
-											{playlist.followers.total.toLocaleString()}{" "}
-											{playlist.followers.total > 1 ? "likes" : "like"}
-										</span>
-									)}
 								{playlist.tracks?.items && playlist.tracks.items.length > 0 && (
 									<span className="text-gray">
 										{playlist.tracks.total.toLocaleString()} songs

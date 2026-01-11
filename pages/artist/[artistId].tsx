@@ -10,17 +10,13 @@ import type { Album, Artist, Track } from "@/types/types";
 import { customGet } from "@/utils/custom-get";
 import { isAuthenticated } from "@/utils/is-authenticated";
 
-interface Albums {
-	items: Album[];
-}
-
 interface IProps {
 	artist: Artist;
 	artistTracks: Track[];
-	artistAlbums: Albums;
-	artistSingles: Albums;
-	artistAppearsOn: Albums;
-	artistCompilation: Albums;
+	artistAlbums: { items: Album[] };
+	artistSingles: { items: Album[] };
+	artistAppearsOn: { items: Album[] };
+	artistCompilation: { items: Album[] };
 }
 
 export default function SingleArtist({

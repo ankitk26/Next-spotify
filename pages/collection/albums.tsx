@@ -31,10 +31,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 		};
 	}
 
-	const { items } = await customGet(
+	const { items }: { items: { album: Album }[] } = await customGet(
 		"https://api.spotify.com/v1/me/albums?market=from_token&limit=50",
 		session
 	);
 
-	return { props: { albums: items.map((item) => item.album) } };
+	const albums = items.map((item) => item.album);
+
+	return { props: { albums } };
 };

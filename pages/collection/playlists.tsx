@@ -6,12 +6,12 @@ import CardItemGrid from "@/components/card-item-grid";
 import Heading from "@/components/heading";
 import Layout from "@/components/layout";
 import { useSpotify } from "@/context/spotify-context";
-import type { PlaylistType } from "@/types/types";
+import type { Track } from "@/types/types";
 import { customGet } from "@/utils/custom-get";
 import { isAuthenticated } from "@/utils/is-authenticated";
 
 interface IProps {
-	likedTracks: PlaylistType;
+	likedTracks: { items: { track: Track }[]; total: number };
 }
 
 export default function UserPlaylists({ likedTracks }: IProps) {
@@ -72,10 +72,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 		};
 	}
 
-	const likedTracks = await customGet(
-		"https://api.spotify.com/v1/me/tracks?market=from_token&limit=5",
-		session
-	);
+	const likedTracks: { items: { track: Track }[]; total: number } =
+		await customGet(
+			"https://api.spotify.com/v1/me/tracks?market=from_token&limit=5",
+			session
+		);
 
 	return { props: { likedTracks } };
 };

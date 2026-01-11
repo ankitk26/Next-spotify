@@ -6,6 +6,7 @@ interface MyUser {
 	picture?: string | null;
 	image?: string | null;
 	accessToken?: string | null;
+	expires_at?: number;
 }
 
 export interface MySession extends Omit<DefaultSession, "user"> {
@@ -13,20 +14,26 @@ export interface MySession extends Omit<DefaultSession, "user"> {
 	expires: string;
 }
 
-export interface ImageType {
+export interface SpotifyImage {
 	height: number | null;
-	url: string | null;
+	url: string;
 	width: number | null;
+}
+
+export interface Category {
+	id: string;
+	name: string;
+	icons: SpotifyImage[];
 }
 
 export interface Album {
 	id: string;
 	name: string;
-	artists: [Artist];
-	images?: [ImageType];
+	artists: Artist[];
+	images: SpotifyImage[];
 	album_type?: string;
-	release_date?: string;
-	tracks?: {
+	release_date: string;
+	tracks: {
 		total: number;
 		items: Track[];
 	};
@@ -35,40 +42,38 @@ export interface Album {
 export interface Artist {
 	id: string;
 	name: string;
-	images?: [ImageType];
+	images: SpotifyImage[];
 	followers?: {
 		total: number;
 	};
-	genres?: [string];
+	genres?: string[];
 }
 
 export interface Track {
 	id: string;
 	name: string;
 	album: Album;
-	artists: [Artist];
+	artists: Artist[];
 	duration_ms: number;
 	preview_url: string;
 }
 
-export interface PlaylistType {
+export interface Playlist {
 	description?: string;
 	id: string;
-	followers?: {
-		total?: number;
-	};
-	images?: [ImageType];
+	images: SpotifyImage[];
 	name: string;
-	owner?: {
+	owner: {
 		id: string;
 		display_name?: string;
 	};
 	items?: [{ added_at: string; track: Track }];
-	tracks?: {
-		items?: [{ added_at: string; track: Track }];
+	tracks: {
+		items: [{ added_at: string; track: Track }];
 		total: number;
+		next?: string;
 	};
-	type?: string;
+	type: string;
 	total?: number;
 }
 
@@ -80,7 +85,7 @@ export interface SearchResults {
 		items: Artist[];
 	};
 	playlists?: {
-		items: PlaylistType[];
+		items: Playlist[];
 	};
 	tracks?: {
 		items: Track[];

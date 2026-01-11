@@ -1,9 +1,9 @@
-import type { PlaylistType } from "@/types/types";
+import type { Playlist } from "@/types/types";
 import CardItem from "./card-item";
 import CardItemGrid from "./card-item-grid";
 
 interface IProps {
-	playlists: PlaylistType[];
+	playlists: Playlist[];
 }
 
 export default function PlaylistList({ playlists }: IProps) {

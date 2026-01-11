@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RiMusic2Fill } from "react-icons/ri";
-import type { ImageType } from "@/types/types";
+import type { SpotifyImage } from "@/types/types";
 
 interface IProps {
-	images: ImageType[] | undefined;
+	images: SpotifyImage[] | undefined;
 	id: string;
 	altTitle: string;
 	heading: string;

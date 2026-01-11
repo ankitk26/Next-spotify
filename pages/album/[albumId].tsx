@@ -67,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	}
 
 	const albumId = ctx.params?.albumId;
-	const album = await customGet(
+	const album: Album = await customGet(
 		`https://api.spotify.com/v1/albums/${albumId}`,
 		session
 	);

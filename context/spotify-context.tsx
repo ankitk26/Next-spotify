@@ -6,10 +6,10 @@ import {
 	useContext,
 	useState,
 } from "react";
-import type { PlaylistType, SearchResults, Track } from "@/types/types";
+import type { Playlist, SearchResults, Track } from "@/types/types";
 
 interface ContextProps {
-	playlists: PlaylistType[];
+	playlists: Playlist[];
 	searchResults: SearchResults | null;
 	query: string;
 	setQuery: Dispatch<SetStateAction<string>>;
@@ -28,7 +28,7 @@ export const SpotifyProvider = ({
 }: {
 	children: React.ReactNode;
 }) => {
-	const [playlists, setPlaylists] = useState<PlaylistType[]>([]);
+	const [playlists, setPlaylists] = useState<Playlist[]>([]);
 	const [searchResults, setSearchResults] = useState<SearchResults | null>(
 		null
 	);
@@ -37,7 +37,7 @@ export const SpotifyProvider = ({
 	const [query, setQuery] = useState("");
 
 	const fetchPlaylists = async () => {
-		const resp = await axios.get("/api/playlists");
+		const resp = await axios.get<{ items: Playlist[] }>("/api/playlists");
 		const data = resp.data;
 		setPlaylists(data.items);
 	};

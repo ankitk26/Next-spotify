@@ -32,10 +32,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 		};
 	}
 
-	const followedArtists = await customGet(
+	const followedArtists: { artists: { items: Artist[] } } = await customGet(
 		"https://api.spotify.com/v1/me/following?type=artist&limit=50",
 		session
 	);
 
-	return { props: { followedArtists: followedArtists.artists.items } };
+	const artists = followedArtists.artists.items;
+
+	return { props: { artists } };
 };
