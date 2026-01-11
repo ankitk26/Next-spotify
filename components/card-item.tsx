@@ -62,8 +62,8 @@ export default function CardItem({
 						width={144}
 					/>
 				) : (
-					<div className="h-40 w-full">
-						<RiMusic2Fill className="h-full w-full bg-paper" />
+					<div className="flex h-36 w-full items-center justify-center">
+						<RiMusic2Fill className="size-36 bg-paper p-2" />
 					</div>
 				)}
 				<h3 className="mt-5 truncate font-bold">{heading}</h3>

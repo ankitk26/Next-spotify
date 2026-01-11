@@ -45,8 +45,8 @@ export default function SingleArtist({
 								width={208}
 							/>
 						) : (
-							<div className="h-40 w-full">
-								<RiMusic2Fill className="h-full w-full bg-paper" />
+							<div className="flex h-52 w-52 items-center justify-center rounded-full bg-paper">
+								<RiMusic2Fill className="size-36 text-gray" />
 							</div>
 						)}
 						<div className="flex flex-col items-start gap-3">
@@ -54,9 +54,14 @@ export default function SingleArtist({
 							<span className="text-sm">
 								{artist.followers?.total.toLocaleString()} followers
 							</span>
-							<div className="flex items-center gap-5 text-sm">
+							<div className="flex flex-wrap items-center gap-1.5 text-xs">
 								{artist.genres?.map((genre) => (
-									<span key={genre}>{genre}</span>
+									<span
+										className="rounded-full bg-card-hover px-2 py-0.5 text-gray"
+										key={genre}
+									>
+										{genre}
+									</span>
 								))}
 							</div>
 						</div>

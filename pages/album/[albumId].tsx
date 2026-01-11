@@ -27,8 +27,8 @@ export default function SingleAlbum({ album }: IProps) {
 								width={208}
 							/>
 						) : (
-							<div className="h-40 w-full">
-								<RiMusic2Fill className="h-full w-full bg-paper" />
+							<div className="flex h-52 w-52 items-center justify-center bg-paper">
+								<RiMusic2Fill className="size-36 text-gray" />
 							</div>
 						)}
 						<div className="flex flex-col gap-3">

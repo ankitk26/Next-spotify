@@ -29,28 +29,34 @@ export default function Playlist({ playlist }: IProps) {
 								width={240}
 							/>
 						) : (
-							<div className="h-40 w-full">
-								<RiMusic2Fill className="h-full w-full bg-paper" />
+							<div className="flex h-60 w-60 items-center justify-center bg-paper">
+								<RiMusic2Fill className="size-36 text-gray" />
 							</div>
 						)}
 						<div className="flex flex-col gap-3">
 							<h5 className="font-bold text-xs uppercase">{playlist.type}</h5>
 							<h2 className="font-bold text-5xl">{playlist.name}</h2>
 
-							<p className={styles.description}>
-								{parse(playlist.description ?? "")}
-							</p>
+							{playlist.description &&
+								playlist.description !== "null" &&
+								playlist.description.trim() !== "" && (
+									<p className={styles.description}>
+										{parse(playlist.description)}
+									</p>
+								)}
 
 							<div className="flex items-center gap-5 text-sm">
 								<span className="font-bold">
-									{playlist.owner?.display_name}
+									@{playlist.owner?.display_name}
 								</span>
-								{playlist.followers?.total && playlist.followers.total > 0 && (
-									<span className="text-gray">
-										{playlist.followers.total.toLocaleString()}{" "}
-										{playlist.followers.total > 1 ? "likes" : "like"}
-									</span>
-								)}
+								{playlist.followers?.total !== undefined &&
+									playlist.followers?.total !== null &&
+									playlist.followers.total > 0 && (
+										<span className="text-gray">
+											{playlist.followers.total.toLocaleString()}{" "}
+											{playlist.followers.total > 1 ? "likes" : "like"}
+										</span>
+									)}
 								{playlist.tracks?.items && playlist.tracks.items.length > 0 && (
 									<span className="text-gray">
 										{playlist.tracks.total.toLocaleString()} songs
