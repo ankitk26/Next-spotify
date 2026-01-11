@@ -6,7 +6,7 @@ import {
 	useContext,
 	useState,
 } from "react";
-import type { PlaylistType, SearchResults, Track } from "../types/types";
+import type { PlaylistType, SearchResults, Track } from "@/types/types";
 
 interface ContextProps {
 	playlists: PlaylistType[];

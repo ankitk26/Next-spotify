@@ -1,4 +1,4 @@
-import type { PlaylistType } from "../types/types";
+import type { PlaylistType } from "@/types/types";
 import CardItem from "./card-item";
 import CardItemGrid from "./card-item-grid";
 

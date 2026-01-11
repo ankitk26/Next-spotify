@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
-import { useSpotify } from "../context/spotify-context";
+import { useSpotify } from "@/context/spotify-context";
 
 export default function SearchInput() {
 	const router = useRouter();

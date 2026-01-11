@@ -1,4 +1,4 @@
-import type { MySession } from "../types/types";
+import type { MySession } from "@/types/types";
 
 export const customGet = async (url: string, session: MySession | null) => {
 	if (!session) {

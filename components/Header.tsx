@@ -4,8 +4,8 @@ import { signOut, useSession } from "next-auth/react";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdLogout, MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 // LEGACY CODE: useSpotify setCurrentTrack commented out - Spotify has disabled previews
-// import { useSpotify } from "../context/spotify-context";
-import type { MySession } from "../types/types";
+// import { useSpotify } from "@/context/spotify-context";
+import type { MySession } from "@/types/types";
 import CollectionTabs from "./collection-tabs";
 import SearchInput from "./search-input";
 

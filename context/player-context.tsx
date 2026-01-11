@@ -1,6 +1,6 @@
 // LEGACY CODE: Spotify has disabled previews, so all player functionality is commented out
 // import { createContext, useContext, useEffect, useState } from "react";
-// import type { Track } from "../types/types";
+// import type { Track } from "@/types/types";
 
 // const PlayerContext = createContext({} as any);
 

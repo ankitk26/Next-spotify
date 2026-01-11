@@ -1,14 +1,14 @@
 import type { GetServerSideProps } from "next";
 import Link from "next/link";
 import { getSession } from "next-auth/react";
-import CardItem from "../../components/card-item";
-import CardItemGrid from "../../components/card-item-grid";
-import Heading from "../../components/heading";
-import Layout from "../../components/layout";
-import { useSpotify } from "../../context/spotify-context";
-import type { PlaylistType } from "../../types/types";
-import { customGet } from "../../utils/custom-get";
-import { isAuthenticated } from "../../utils/is-authenticated";
+import CardItem from "@/components/card-item";
+import CardItemGrid from "@/components/card-item-grid";
+import Heading from "@/components/heading";
+import Layout from "@/components/layout";
+import { useSpotify } from "@/context/spotify-context";
+import type { PlaylistType } from "@/types/types";
+import { customGet } from "@/utils/custom-get";
+import { isAuthenticated } from "@/utils/is-authenticated";
 
 interface IProps {
 	likedTracks: PlaylistType;

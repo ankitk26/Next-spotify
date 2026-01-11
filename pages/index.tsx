@@ -1,11 +1,11 @@
 import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
-import AlbumList from "../components/album-list";
-import Heading from "../components/heading";
-import Layout from "../components/layout";
-import { customGet } from "../utils/custom-get";
-import { getGreeting } from "../utils/get-greeting";
-import { isAuthenticated } from "../utils/is-authenticated";
+import AlbumList from "@/components/album-list";
+import Heading from "@/components/heading";
+import Layout from "@/components/layout";
+import { customGet } from "@/utils/custom-get";
+import { getGreeting } from "@/utils/get-greeting";
+import { isAuthenticated } from "@/utils/is-authenticated";
 
 // biome-ignore lint/suspicious/noExplicitAny: <will fix later>
 export default function Home({ newReleases }: { newReleases: any }) {

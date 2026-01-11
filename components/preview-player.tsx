@@ -1,5 +1,5 @@
 // LEGACY CODE: Spotify has disabled previews, so player functionality is commented out
-// import { usePlayer } from "../context/player-context";
+// import { usePlayer } from "@/context/player-context";
 // import AdditionalControllers from "./additional-controllers";
 // import MainControllers from "./main-controllers";
 // import PlayerTrackInfo from "./player-track-info";

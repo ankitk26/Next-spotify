@@ -1,11 +1,11 @@
 import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
-import AlbumList from "../../../components/album-list";
-import Heading from "../../../components/heading";
-import Layout from "../../../components/layout";
-import type { Album } from "../../../types/types";
-import { customGet } from "../../../utils/custom-get";
-import { isAuthenticated } from "../../../utils/is-authenticated";
+import AlbumList from "@/components/album-list";
+import Heading from "@/components/heading";
+import Layout from "@/components/layout";
+import type { Album } from "@/types/types";
+import { customGet } from "@/utils/custom-get";
+import { isAuthenticated } from "@/utils/is-authenticated";
 
 interface IProps {
 	query: string;

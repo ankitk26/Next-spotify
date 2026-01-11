@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RiMusic2Fill } from "react-icons/ri";
-import type { ImageType } from "../types/types";
+import type { ImageType } from "@/types/types";
 
 interface IProps {
 	images: ImageType[] | undefined;

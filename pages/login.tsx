@@ -2,7 +2,7 @@ import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { RiLoader2Fill } from "react-icons/ri";
-import Layout from "../components/layout";
+import Layout from "@/components/layout";
 
 export default function Login() {
 	const [isLoading, setIsLoading] = useState(false);

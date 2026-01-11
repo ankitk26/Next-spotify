@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { MdSchedule } from "react-icons/md";
 // LEGACY CODE: usePlayer commented out - Spotify has disabled previews
-// import { usePlayer } from "../context/player-context";
-import type { Artist, Track } from "../types/types";
-import { fmtMSS } from "../utils/format-duration";
+// import { usePlayer } from "@/context/player-context";
+import type { Artist, Track } from "@/types/types";
+import { fmtMSS } from "@/utils/format-duration";
 
 interface IProps {
 	tracks: Track[];

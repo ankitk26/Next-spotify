@@ -1,7 +1,7 @@
 // LEGACY CODE: Spotify has disabled previews, so player track info is commented out
 // import Link from "next/link";
 // import { IoHeart } from "react-icons/io5";
-// import type { Track } from "../types/types";
+// import type { Track } from "@/types/types";
 
 // interface IProps {
 //   currentTrack: Track;

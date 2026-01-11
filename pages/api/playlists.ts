@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
-import { customGet } from "../../utils/custom-get";
+import { customGet } from "@/utils/custom-get";
 
 export default async function handler(
 	req: NextApiRequest,

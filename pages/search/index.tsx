@@ -1,12 +1,12 @@
 /** biome-ignore-all lint/suspicious/noExplicitAny: <will fix later> */
 import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
-import CardItem from "../../components/card-item";
-import CardItemGrid from "../../components/card-item-grid";
-import Heading from "../../components/heading";
-import Layout from "../../components/layout";
-import { customGet } from "../../utils/custom-get";
-import { isAuthenticated } from "../../utils/is-authenticated";
+import CardItem from "@/components/card-item";
+import CardItemGrid from "@/components/card-item-grid";
+import Heading from "@/components/heading";
+import Layout from "@/components/layout";
+import { customGet } from "@/utils/custom-get";
+import { isAuthenticated } from "@/utils/is-authenticated";
 
 export default function Search({ categories }: { categories: any }) {
 	return (

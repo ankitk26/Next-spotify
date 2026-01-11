@@ -1,4 +1,4 @@
-import type { Artist } from "../types/types";
+import type { Artist } from "@/types/types";
 import CardItem from "./card-item";
 import CardItemGrid from "./card-item-grid";
 

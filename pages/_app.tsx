@@ -4,15 +4,15 @@ import { SessionProvider } from "next-auth/react";
 import nProgress from "nprogress";
 import { useEffect } from "react";
 // LEGACY CODE: PreviewPlayer commented out - Spotify has disabled previews
-// import PreviewPlayer from "../components/preview-player";
+// import PreviewPlayer from "@/components/preview-player";
 // LEGACY CODE: PlayerProvider commented out - Spotify has disabled previews
-// import PlayerProvider from "../context/player-context";
-import { SpotifyProvider } from "../context/spotify-context";
-import "../styles/globals.css";
-import "../styles/nonTailwind.css";
+// import PlayerProvider from "@/context/player-context";
+import { SpotifyProvider } from "@/context/spotify-context";
+import "@/styles/globals.css";
+import "@/styles/nonTailwind.css";
 import { Montserrat } from "next/font/google";
-import Header from "../components/header";
-import Sidebar from "../components/sidebar";
+import Header from "@/components/header";
+import Sidebar from "@/components/sidebar";
 
 nProgress.configure({
 	showSpinner: false,

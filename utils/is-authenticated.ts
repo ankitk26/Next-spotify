@@ -1,4 +1,4 @@
-import type { MySession } from "../types/types";
+import type { MySession } from "@/types/types";
 
 export const isAuthenticated = (session: MySession | null) => {
 	if (

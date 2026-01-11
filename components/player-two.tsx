@@ -1,6 +1,6 @@
 // LEGACY CODE: Spotify has disabled previews, so player functionality is commented out
 // import { useEffect, useState } from "react";
-// import { useSpotify } from "../context/spotify-context";
+// import { useSpotify } from "@/context/spotify-context";
 // import AdditionalControllers from "./additional-controllers";
 // import PlayerTrackInfo from "./player-track-info";
 

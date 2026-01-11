@@ -2,17 +2,17 @@ import type { GetServerSideProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getSession } from "next-auth/react";
-import AlbumList from "../../../components/album-list";
-import ArtistList from "../../../components/artist-list";
-import Heading from "../../../components/heading";
-import Layout from "../../../components/layout";
-import PlaylistList from "../../../components/playlist-list";
+import AlbumList from "@/components/album-list";
+import ArtistList from "@/components/artist-list";
+import Heading from "@/components/heading";
+import Layout from "@/components/layout";
+import PlaylistList from "@/components/playlist-list";
 // LEGACY CODE: useSpotify setCurrentTrack commented out - Spotify has disabled previews
-// import { useSpotify } from "../../../context/spotify-context";
-import type { SearchResults } from "../../../types/types";
-import { customGet } from "../../../utils/custom-get";
-import { fmtMSS } from "../../../utils/format-duration";
-import { isAuthenticated } from "../../../utils/is-authenticated";
+// import { useSpotify } from "@/context/spotify-context";
+import type { SearchResults } from "@/types/types";
+import { customGet } from "@/utils/custom-get";
+import { fmtMSS } from "@/utils/format-duration";
+import { isAuthenticated } from "@/utils/is-authenticated";
 
 interface IProps {
 	query: string;
