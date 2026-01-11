@@ -9,7 +9,7 @@ export default function SearchInput() {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		router.push(`/search/${query}`);
+		router.push(`/search/${encodeURIComponent(query)}`);
 	};
 
 	if (!router.pathname.includes("/search")) {

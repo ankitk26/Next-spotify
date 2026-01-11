@@ -10,7 +10,7 @@ interface IProps {
 	heading: string;
 	subheading?: string;
 	imageRounded?: boolean;
-	type: string;
+	type: "genre" | "artist" | "album" | "playlist";
 }
 
 export default function CardItem({
