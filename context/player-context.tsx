@@ -112,9 +112,9 @@
 
 // const PlayerContext = createContext({} as any);
 
-// export default function PlayerProvider({ children }) {
-//   return <>{children}</>;
-// }
+export default function PlayerProvider() {
+	return null;
+}
 
 // export const usePlayer = () => ({
 //   setCurrentTrack: () => {},

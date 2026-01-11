@@ -21,3 +21,6 @@
 //     </div>
 //   );
 // }
+export default function AdditionalControllers() {
+	return null;
+}
