@@ -37,7 +37,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 		session
 	);
 
-	const artists = followedArtists.artists.items;
-
-	return { props: { artists } };
+	return { props: { followedArtists: followedArtists.artists.items } };
 };
